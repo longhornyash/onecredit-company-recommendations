@@ -1,0 +1,13 @@
+{
+  "model": "intfloat/multilingual-e5-small@614241f622f53c4eeff9890bdc4f31cfecc418b3:nfkc-whitespace-v1:symmetric-v1",
+  "provider": "CPUExecutionProvider",
+  "threads": 2,
+  "unique_normalized_feed_descriptions": 177,
+  "initialization_seconds": 1.2359359579859301,
+  "embedding_wall_seconds": 0.932091832975857,
+  "embedding_cpu_seconds": 1.8263999999999998,
+  "descriptions_per_second": 189.89545207675332,
+  "peak_process_rss_mib": 815.328125,
+  "cache_hit_avoided_inference": true,
+  "limitations": "Single local process with cached artifacts; RSS excludes database/broker; not cold-download time."
+}

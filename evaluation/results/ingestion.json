@@ -1,0 +1,11 @@
+{
+  "transport": "file-recovery",
+  "counts": {
+    "applied": 2343,
+    "duplicate": 68,
+    "rejected": 41,
+    "stale": 66
+  },
+  "model_inferences": 177,
+  "seconds": 5.9165715830167755
+}

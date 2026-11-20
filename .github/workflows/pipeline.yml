@@ -1,0 +1,23 @@
+name: full-native-pipeline
+on: [workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  pipeline:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          enable-cache: true
+      - run: uv sync --locked
+      - run: docker compose up -d --wait
+      - run: uv run python -m scripts.pipeline --output-dir evaluation/results/native-ci
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: native-pipeline-results
+          path: evaluation/results/native-ci
+      - if: always()
+        run: docker compose down -v

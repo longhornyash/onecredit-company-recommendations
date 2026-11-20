@@ -1,0 +1,36 @@
+{
+  "registrationNumber": "SYN-001550",
+  "method": "dense",
+  "scoreType": "cosine_similarity",
+  "modelVersion": "microsoft/harrier-oss-v1-0.6b@f9b9dc8d367d443f2479d27aa5d8d2850c0774ee:nfkc-whitespace-v1:sts-last-token-cpu-f32-512-v1",
+  "results": [
+    {
+      "registrationNumber": "SYN-000539",
+      "companyName": "Seri Sejahtera Food Sdn. Bhd.",
+      "industry": "Food & Beverage",
+      "state": "Johor",
+      "score": 1.0
+    },
+    {
+      "registrationNumber": "SYN-000263",
+      "companyName": "Gemilang Delima Food Sdn. Bhd.",
+      "industry": "Food & Beverage",
+      "state": "Johor",
+      "score": 0.9391232692672787
+    },
+    {
+      "registrationNumber": "SYN-001650",
+      "companyName": "Everbright Pacific Food Sdn. Bhd.",
+      "industry": "Food & Beverage",
+      "state": "Kuala Lumpur",
+      "score": 0.9391232692672787
+    },
+    {
+      "registrationNumber": "SYN-001781",
+      "companyName": "Global Sejahtera Bakery Trading",
+      "industry": "Food & Beverage",
+      "state": "Pahang",
+      "score": 0.9348518848419256
+    }
+  ]
+}

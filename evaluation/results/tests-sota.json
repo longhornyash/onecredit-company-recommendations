@@ -1,0 +1,9 @@
+{
+  "tests": 52,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "database": "PostgreSQL 18.7 / PGlite 0.5.17",
+  "broker": "RabbitMQ 3.13.7",
+  "native_postgres16_verified": false
+}

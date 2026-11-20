@@ -1,0 +1,42 @@
+{
+  "runtime": "3.14.5 (main, Jun  2 2026, 22:28:56) [Clang 22.1.3 ]",
+  "platform": "macOS-15.6.1-arm64-arm-64bit-Mach-O",
+  "database_version": "PostgreSQL 18.7 (PGlite 0.5.17) on wasm32-unknown-emscripten, compiled by emcc (Emscripten gcc/clang-like replacement + linker emulating GNU ld) 6.0.13 (e13ee988ce3d87a738dd8f3661d02223308c412a), 32-bit",
+  "model": "microsoft/harrier-oss-v1-0.6b@f9b9dc8d367d443f2479d27aa5d8d2850c0774ee:nfkc-whitespace-v1:sts-last-token-cpu-f32-512-v1",
+  "source_company_population": 1971,
+  "method": "dense",
+  "search_algorithm": "hnsw",
+  "measurements": [
+    {
+      "concurrency": 1,
+      "requests": 1971,
+      "distinct_source_companies": 1971,
+      "errors": 0,
+      "p50_ms": 1.9957500044256449,
+      "p95_ms": 2.5331659708172083,
+      "max_ms": 6.101249950006604,
+      "requests_per_second": 476.8694716832384
+    },
+    {
+      "concurrency": 8,
+      "requests": 1971,
+      "distinct_source_companies": 1971,
+      "errors": 0,
+      "p50_ms": 11.31800003349781,
+      "p95_ms": 13.579041929915547,
+      "max_ms": 20.877250004559755,
+      "requests_per_second": 688.2172874903155
+    },
+    {
+      "concurrency": 32,
+      "requests": 1971,
+      "distinct_source_companies": 1971,
+      "errors": 0,
+      "p50_ms": 46.97999998461455,
+      "p95_ms": 50.22820900194347,
+      "max_ms": 69.94962505996227,
+      "requests_per_second": 673.3853837365726
+    }
+  ],
+  "limitations": "Local warm HTTP smoke test; no durability, availability, or production SLO claim."
+}

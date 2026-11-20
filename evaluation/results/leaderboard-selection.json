@@ -1,0 +1,140 @@
+{
+  "benchmark": "MTEB(Multilingual, v2)",
+  "retrieved_at_utc": "2026-11-20T03:03:07.898369+00:00",
+  "source_url": "https://mteb-leaderboard-backend.hf.space/v1/benchmarks/MTEB%28Multilingual%2C%20v2%29/scores",
+  "raw_snapshot_sha256": "a24131d0c27f5d5bfd537bf1f2a4db5b16528937bc2921c61ab223ff93fcdb82",
+  "overall_leader": {
+    "rank": 1,
+    "meanTask": 0.7427199384685496,
+    "meanTaskType": 0.6419565096604186,
+    "totalParamsB": 27.009,
+    "name": "microsoft/harrier-oss-v1-27b",
+    "license": "mit",
+    "memory_mb": 51515.0,
+    "tasks_with_scores": 131
+  },
+  "sub_1b_by_mean_task": [
+    {
+      "rank": 10,
+      "meanTask": 0.6901251361787604,
+      "meanTaskType": 0.5899610829481342,
+      "totalParamsB": 0.596,
+      "name": "microsoft/harrier-oss-v1-0.6b",
+      "license": "mit",
+      "memory_mb": 1137.0,
+      "tasks_with_scores": 131
+    },
+    {
+      "rank": 19,
+      "meanTask": 0.66546969531282,
+      "meanTaskType": 0.5690333567547632,
+      "totalParamsB": 0.268,
+      "name": "microsoft/harrier-oss-v1-270m",
+      "license": "mit",
+      "memory_mb": 512.0,
+      "tasks_with_scores": 131
+    },
+    {
+      "rank": 21,
+      "meanTask": 0.6552339420490169,
+      "meanTaskType": 0.5766231801713748,
+      "totalParamsB": 0.986,
+      "name": "jinaai/jina-embeddings-v5-omni-nano",
+      "license": "cc-by-nc-4.0",
+      "memory_mb": 1881.0,
+      "tasks_with_scores": 131
+    },
+    {
+      "rank": 22,
+      "meanTask": 0.6552339420490169,
+      "meanTaskType": 0.5766231801713748,
+      "totalParamsB": 0.212,
+      "name": "jinaai/jina-embeddings-v5-text-nano",
+      "license": "cc-by-nc-4.0",
+      "memory_mb": 404.0,
+      "tasks_with_scores": 131
+    },
+    {
+      "rank": 20,
+      "meanTask": 0.643355192676886,
+      "meanTaskType": 0.5601302542401285,
+      "totalParamsB": 0.596,
+      "name": "Qwen/Qwen3-Embedding-0.6B",
+      "license": "apache-2.0",
+      "memory_mb": 1136.0,
+      "tasks_with_scores": 131
+    },
+    {
+      "rank": 27,
+      "meanTask": 0.6321803081443147,
+      "meanTaskType": 0.5508351261378083,
+      "totalParamsB": 0.56,
+      "name": "intfloat/multilingual-e5-large-instruct",
+      "license": "mit",
+      "memory_mb": 1068.0,
+      "tasks_with_scores": 131
+    },
+    {
+      "rank": 28,
+      "meanTask": 0.6321145209547717,
+      "meanTaskType": 0.5484493458987845,
+      "totalParamsB": 1.0,
+      "name": "BidirLM/BidirLM-1B-Embedding",
+      "license": "apache-2.0",
+      "memory_mb": 1907.0,
+      "tasks_with_scores": 131
+    },
+    {
+      "rank": 30,
+      "meanTask": 0.6273592072520592,
+      "meanTaskType": 0.5501878509896037,
+      "totalParamsB": 0.596,
+      "name": "codefuse-ai/F2LLM-v2-0.6B",
+      "license": "apache-2.0",
+      "memory_mb": 2274.0,
+      "tasks_with_scores": 131
+    },
+    {
+      "rank": 31,
+      "meanTask": 0.6114397901302271,
+      "meanTaskType": 0.5428571907369945,
+      "totalParamsB": 0.308,
+      "name": "google/embeddinggemma-300m",
+      "license": "gemma",
+      "memory_mb": 1155.0,
+      "tasks_with_scores": 131
+    },
+    {
+      "rank": 43,
+      "meanTask": 0.6083682593488806,
+      "meanTaskType": 0.5327376193740775,
+      "totalParamsB": 0.334,
+      "name": "codefuse-ai/F2LLM-v2-330M",
+      "license": "apache-2.0",
+      "memory_mb": 1275.0,
+      "tasks_with_scores": 131
+    },
+    {
+      "rank": 40,
+      "meanTask": 0.6052027126050209,
+      "meanTaskType": 0.5283188442748062,
+      "totalParamsB": 0.271,
+      "name": "google/embeddinggemma-2",
+      "license": "gemma",
+      "memory_mb": 1034.0,
+      "tasks_with_scores": 131
+    },
+    {
+      "rank": 41,
+      "meanTask": 0.6041920978359635,
+      "meanTaskType": 0.5285171877694232,
+      "totalParamsB": 0.596,
+      "name": "BidirLM/BidirLM-0.6B-Embedding",
+      "license": "apache-2.0",
+      "memory_mb": 1137.0,
+      "tasks_with_scores": 131
+    }
+  ],
+  "selected_candidate": "microsoft/harrier-oss-v1-0.6b",
+  "selection_scope": "Highest meanTask among open-weight sub-1B entries returned in this benchmark snapshot; not an absolute claim across all benchmarks or unpublished models."
+}

@@ -1,0 +1,3147 @@
+{
+  "evaluation_version": "2026.11-v1",
+  "database_version": "PostgreSQL 18.7 (PGlite 0.5.17) on wasm32-unknown-emscripten, compiled by emcc (Emscripten gcc/clang-like replacement + linker emulating GNU ld) 6.0.13 (e13ee988ce3d87a738dd8f3661d02223308c412a), 32-bit",
+  "cases_sha256": "4c1113465c0bd905df0755329b105f905027220a4423afb4c4d533746a3ec83d",
+  "model": "BAAI/bge-small-en-v1.5@aa8f8b060edb00e03bfdd08813a2949946c8ba55:nfkc-whitespace-v1:symmetric-v1",
+  "documents": 24,
+  "embedding_load_and_inference_seconds": 0.7041312500368804,
+  "provenance": "provisional activity-family judgments over verbatim descriptions in the official synthetic feed. Requires independent bilingual review before treating this as a human gold standard. Labels are never used by production retrieval.",
+  "limitations": [
+    "24-document closed corpus; not full-feed recommendation quality",
+    "provisional labels; independent bilingual review pending",
+    "SQL timing includes Python/client overhead; not HTTP or production latency",
+    "held-out activity families; no fine-tuning or parameter tuning on these labels"
+  ],
+  "summary": [
+    {
+      "split": "development",
+      "task": "different_description",
+      "method": "dense",
+      "queries": 12,
+      "ndcg_at_4": 0.2600865105804917,
+      "relevance_at_4": 0.16666666666666666,
+      "same_activity_at_1": 0.16666666666666666,
+      "sql_p50_ms": 0.367208500392735,
+      "sql_p95_ms": 0.8911250624805689
+    },
+    {
+      "split": "development",
+      "task": "different_description",
+      "method": "lexical",
+      "queries": 12,
+      "ndcg_at_4": 0.15393890739677554,
+      "relevance_at_4": 0.08333333333333333,
+      "same_activity_at_1": 0.16666666666666666,
+      "sql_p50_ms": 0.5396460182964802,
+      "sql_p95_ms": 0.7242499850690365
+    },
+    {
+      "split": "development",
+      "task": "different_description",
+      "method": "hybrid",
+      "queries": 12,
+      "ndcg_at_4": 0.2358737774691712,
+      "relevance_at_4": 0.16666666666666666,
+      "same_activity_at_1": 0.16666666666666666,
+      "sql_p50_ms": 0.5952500505372882,
+      "sql_p95_ms": 1.3502090005204082
+    },
+    {
+      "split": "development",
+      "task": "cross_language",
+      "method": "dense",
+      "queries": 12,
+      "ndcg_at_4": 0.4233625150742022,
+      "relevance_at_4": 0.16666666666666666,
+      "same_activity_at_1": 0.4166666666666667,
+      "sql_p50_ms": 0.3093754639849067,
+      "sql_p95_ms": 0.33129192888736725
+    },
+    {
+      "split": "development",
+      "task": "cross_language",
+      "method": "lexical",
+      "queries": 12,
+      "ndcg_at_4": 0.39125511429048,
+      "relevance_at_4": 0.125,
+      "same_activity_at_1": 0.3333333333333333,
+      "sql_p50_ms": 0.36262505454942584,
+      "sql_p95_ms": 0.44608290772885084
+    },
+    {
+      "split": "development",
+      "task": "cross_language",
+      "method": "hybrid",
+      "queries": 12,
+      "ndcg_at_4": 0.5900291817408688,
+      "relevance_at_4": 0.20833333333333334,
+      "same_activity_at_1": 0.5833333333333334,
+      "sql_p50_ms": 0.4153965273872018,
+      "sql_p95_ms": 0.4825419746339321
+    },
+    {
+      "split": "held_out",
+      "task": "different_description",
+      "method": "dense",
+      "queries": 12,
+      "ndcg_at_4": 0.3150117210196916,
+      "relevance_at_4": 0.1875,
+      "same_activity_at_1": 0.25,
+      "sql_p50_ms": 0.36956247640773654,
+      "sql_p95_ms": 0.4260839195922017
+    },
+    {
+      "split": "held_out",
+      "task": "different_description",
+      "method": "lexical",
+      "queries": 12,
+      "ndcg_at_4": 0.08333333333333333,
+      "relevance_at_4": 0.041666666666666664,
+      "same_activity_at_1": 0,
+      "sql_p50_ms": 0.5247295484878123,
+      "sql_p95_ms": 0.6373330252245069
+    },
+    {
+      "split": "held_out",
+      "task": "different_description",
+      "method": "hybrid",
+      "queries": 12,
+      "ndcg_at_4": 0.18898461438947955,
+      "relevance_at_4": 0.125,
+      "same_activity_at_1": 0.08333333333333333,
+      "sql_p50_ms": 0.5831249873153865,
+      "sql_p95_ms": 0.7429159013554454
+    },
+    {
+      "split": "held_out",
+      "task": "cross_language",
+      "method": "dense",
+      "queries": 12,
+      "ndcg_at_4": 0.6232093030510606,
+      "relevance_at_4": 0.3125,
+      "same_activity_at_1": 0.4166666666666667,
+      "sql_p50_ms": 0.3093955456279218,
+      "sql_p95_ms": 0.34420902375131845
+    },
+    {
+      "split": "held_out",
+      "task": "cross_language",
+      "method": "lexical",
+      "queries": 12,
+      "ndcg_at_4": 0.30437244285476,
+      "relevance_at_4": 0.08333333333333333,
+      "same_activity_at_1": 0.3333333333333333,
+      "sql_p50_ms": 0.3601664793677628,
+      "sql_p95_ms": 0.4562090616673231
+    },
+    {
+      "split": "held_out",
+      "task": "cross_language",
+      "method": "hybrid",
+      "queries": 12,
+      "ndcg_at_4": 0.6486208554272472,
+      "relevance_at_4": 0.3125,
+      "same_activity_at_1": 0.5,
+      "sql_p50_ms": 0.4101250087842345,
+      "sql_p95_ms": 0.7739169523119926
+    }
+  ],
+  "queries": [
+    {
+      "query": "bakery-en",
+      "split": "development",
+      "task": "different_description",
+      "method": "dense",
+      "ndcg_at_4": 0.7002755876478819,
+      "relevance_at_4": 0.5,
+      "same_activity_at_1": 0,
+      "sql_ms": 0.8911250624805689,
+      "returned": [
+        "cafe-en",
+        "bakery-ms",
+        "accounting-en",
+        "freight-en"
+      ],
+      "grades": [
+        1,
+        2,
+        0,
+        0
+      ]
+    },
+    {
+      "query": "bakery-en",
+      "split": "development",
+      "task": "different_description",
+      "method": "lexical",
+      "ndcg_at_4": 0.0,
+      "relevance_at_4": 0.0,
+      "same_activity_at_1": 0,
+      "sql_ms": 0.7242499850690365,
+      "returned": [
+        "it_support-en",
+        "tuition-en",
+        "accounting-en",
+        "accounting_software-en"
+      ],
+      "grades": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "query": "bakery-en",
+      "split": "development",
+      "task": "different_description",
+      "method": "hybrid",
+      "ndcg_at_4": 0.24207625393180188,
+      "relevance_at_4": 0.25,
+      "same_activity_at_1": 0,
+      "sql_ms": 1.3502090005204082,
+      "returned": [
+        "cafe-en",
+        "accounting-en",
+        "it_support-en",
+        "freight-en"
+      ],
+      "grades": [
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "query": "bakery-ms",
+      "split": "development",
+      "task": "different_description",
+      "method": "dense",
+      "ndcg_at_4": 0.0,
+      "relevance_at_4": 0.0,
+      "same_activity_at_1": 0,
+      "sql_ms": 0.4206669982522726,
+      "returned": [
+        "accounting_software-ms",
+        "freight-ms",
+        "cold_chain-ms",
+        "pharmacy-ms"
+      ],
+      "grades": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "query": "bakery-ms",
+      "split": "development",
+      "task": "different_description",
+      "method": "lexical",
+      "ndcg_at_4": 0.24207625393180188,
+      "relevance_at_4": 0.25,
+      "same_activity_at_1": 0,
+      "sql_ms": 0.5386669654399157,
+      "returned": [
+        "cafe-ms",
+        "tuition-ms",
+        "accounting-ms",
+        "accounting_software-ms"
+      ],
+      "grades": [
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "query": "bakery-ms",
+      "split": "development",
+      "task": "different_description",
+      "method": "hybrid",
+      "ndcg_at_4": 0.15273311123869335,
+      "relevance_at_4": 0.25,
+      "same_activity_at_1": 0,
+      "sql_ms": 0.5507499445229769,
+      "returned": [
+        "accounting_software-ms",
+        "cafe-ms",
+        "tuition-ms",
+        "accounting-ms"
+      ],
+      "grades": [
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "query": "cafe-en",
+      "split": "development",
+      "task": "different_description",
+      "method": "dense",
+      "ndcg_at_4": 0.8472668887613066,
+      "relevance_at_4": 0.5,
+      "same_activity_at_1": 1,
+      "sql_ms": 0.33195805735886097,
+      "returned": [
+        "cafe-ms",
+        "freight-en",
+        "bakery-ms",
+        "cold_chain-ms"
+      ],
+      "grades": [
+        2,
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "query": "cafe-en",
+      "split": "development",
+      "task": "different_description",
+      "method": "lexical",
+      "ndcg_at_4": 0.7262287617954056,
+      "relevance_at_4": 0.25,
+      "same_activity_at_1": 1,
+      "sql_ms": 0.5710829282179475,
+      "returned": [
+        "cafe-ms",
+        "childcare-en",
+        "freight-en",
+        "it_support-en"
+      ],
+      "grades": [
+        2,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "query": "cafe-en",
+      "split": "development",
+      "task": "different_description",
+      "method": "hybrid",
+      "ndcg_at_4": 0.8304853296300547,
+      "relevance_at_4": 0.5,
+      "same_activity_at_1": 1,
+      "sql_ms": 0.6671670125797391,
+      "returned": [
+        "cafe-ms",
+        "freight-en",
+        "it_support-en",
+        "bakery-en"
+      ],
+      "grades": [
+        2,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "query": "cafe-ms",
+      "split": "development",
+      "task": "different_description",
+      "method": "dense",
+      "ndcg_at_4": 0.8472668887613066,
+      "relevance_at_4": 0.5,
+      "same_activity_at_1": 1,
+      "sql_ms": 0.35666697658598423,
+      "returned": [
+        "cafe-en",
+        "cold_chain-ms",
+        "bakery-ms",
+        "pharmacy-ms"
+      ],
+      "grades": [
+        2,
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "query": "cafe-ms",
+      "split": "development",
+      "task": "different_description",
+      "method": "lexical",
+      "ndcg_at_4": 0.878961873034099,
+      "relevance_at_4": 0.5,
+      "same_activity_at_1": 1,
+      "sql_ms": 0.5885410355404019,
+      "returned": [
+        "cafe-en",
+        "bakery-ms",
+        "childcare-ms",
+        "accounting-ms"
+      ],
+      "grades": [
+        2,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "query": "cafe-ms",
+      "split": "development",
+      "task": "different_description",
+      "method": "hybrid",
+      "ndcg_at_4": 0.878961873034099,
+      "relevance_at_4": 0.5,
+      "same_activity_at_1": 1,
+      "sql_ms": 0.6789580220356584,
+      "returned": [
+        "cafe-en",
+        "bakery-ms",
+        "cold_chain-ms",
+        "accounting-ms"
+      ],
+      "grades": [
+        2,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "query": "accounting-en",
+      "split": "development",
+      "task": "different_description",
+      "method": "dense",
+      "ndcg_at_4": 0.0,
+      "relevance_at_4": 0.0,
+      "same_activity_at_1": 0,
+      "sql_ms": 0.41962508112192154,
+      "returned": [
+        "accounting_software-en",
+        "freight-en",
+        "bakery-en",
+        "bakery-ms"
+      ],
+      "grades": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "query": "accounting-en",
+      "split": "development",
+      "task": "different_description",
+      "method": "lexical",
+      "ndcg_at_4": 0.0,
+      "relevance_at_4": 0.0,
+      "same_activity_at_1": 0,
+      "sql_ms": 0.5406250711530447,
+      "returned": [
+        "accounting_software-en",
+        "bakery-en",
+        "cafe-en",
+        "childcare-en"
+      ],
+      "grades": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "query": "accounting-en",
+      "split": "development",
+      "task": "different_description",
+      "method": "hybrid",
+      "ndcg_at_4": 0.0,
+      "relevance_at_4": 0.0,
+      "same_activity_at_1": 0,
+      "sql_ms": 0.5862500984221697,
+      "returned": [
+        "accounting_software-en",
+        "bakery-en",
+        "freight-en",
+        "cafe-en"
+      ],
+      "grades": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "query": "accounting-ms",
+      "split": "development",
+      "task": "different_description",
+      "method": "dense",
+      "ndcg_at_4": 0.0,
+      "relevance_at_4": 0.0,
+      "same_activity_at_1": 0,
+      "sql_ms": 0.3690000157803297,
+      "returned": [
+        "cold_chain-ms",
+        "accounting_software-ms",
+        "tuition-ms",
+        "bakery-ms"
+      ],
+      "grades": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "query": "accounting-ms",
+      "split": "development",
+      "task": "different_description",
+      "method": "lexical",
+      "ndcg_at_4": 0.0,
+      "relevance_at_4": 0.0,
+      "same_activity_at_1": 0,
+      "sql_ms": 0.5353749729692936,
+      "returned": [
+        "cold_chain-ms",
+        "accounting_software-ms",
+        "bakery-ms",
+        "cafe-ms"
+      ],
+      "grades": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "query": "accounting-ms",
+      "split": "development",
+      "task": "different_description",
+      "method": "hybrid",
+      "ndcg_at_4": 0.0,
+      "relevance_at_4": 0.0,
+      "same_activity_at_1": 0,
+      "sql_ms": 0.6042500026524067,
+      "returned": [
+        "cold_chain-ms",
+        "accounting_software-ms",
+        "bakery-ms",
+        "tuition-ms"
+      ],
+      "grades": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "query": "accounting_software-en",
+      "split": "development",
+      "task": "different_description",
+      "method": "dense",
+      "ndcg_at_4": 0.0,
+      "relevance_at_4": 0.0,
+      "same_activity_at_1": 0,
+      "sql_ms": 0.3654169850051403,
+      "returned": [
+        "accounting-en",
+        "it_support-en",
+        "bakery-ms",
+        "cold_chain-ms"
+      ],
+      "grades": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "query": "accounting_software-en",
+      "split": "development",
+      "task": "different_description",
+      "method": "lexical",
+      "ndcg_at_4": 0.0,
+      "relevance_at_4": 0.0,
+      "same_activity_at_1": 0,
+      "sql_ms": 0.5618749419227242,
+      "returned": [
+        "accounting-en",
+        "bakery-en",
+        "it_support-en",
+        "tuition-en"
+      ],
+      "grades": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "query": "accounting_software-en",
+      "split": "development",
+      "task": "different_description",
+      "method": "hybrid",
+      "ndcg_at_4": 0.0,
+      "relevance_at_4": 0.0,
+      "same_activity_at_1": 0,
+      "sql_ms": 0.5811660084873438,
+      "returned": [
+        "accounting-en",
+        "it_support-en",
+        "bakery-en",
+        "tuition-en"
+      ],
+      "grades": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "query": "accounting_software-ms",
+      "split": "development",
+      "task": "different_description",
+      "method": "dense",
+      "ndcg_at_4": 0.0,
+      "relevance_at_4": 0.0,
+      "same_activity_at_1": 0,
+      "sql_ms": 0.38049998693168163,
+      "returned": [
+        "tuition-ms",
+        "accounting-ms",
+        "bakery-ms",
+        "cold_chain-ms"
+      ],
+      "grades": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "query": "accounting_software-ms",
+      "split": "development",
+      "task": "different_description",
+      "method": "lexical",
+      "ndcg_at_4": 0.0,
+      "relevance_at_4": 0.0,
+      "same_activity_at_1": 0,
+      "sql_ms": 0.48854202032089233,
+      "returned": [
+        "accounting-ms",
+        "bakery-ms",
+        "tuition-ms"
+      ],
+      "grades": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "query": "accounting_software-ms",
+      "split": "development",
+      "task": "different_description",
+      "method": "hybrid",
+      "ndcg_at_4": 0.0,
+      "relevance_at_4": 0.0,
+      "same_activity_at_1": 0,
+      "sql_ms": 0.5415830528363585,
+      "returned": [
+        "accounting-ms",
+        "tuition-ms",
+        "bakery-ms",
+        "cold_chain-ms"
+      ],
+      "grades": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "query": "it_support-en",
+      "split": "development",
+      "task": "different_description",
+      "method": "dense",
+      "ndcg_at_4": 0.0,
+      "relevance_at_4": 0.0,
+      "same_activity_at_1": 0,
+      "sql_ms": 0.3736669896170497,
+      "returned": [
+        "cafe-en",
+        "freight-en",
+        "pharmacy-ms",
+        "bakery-ms"
+      ],
+      "grades": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "query": "it_support-en",
+      "split": "development",
+      "task": "different_description",
+      "method": "lexical",
+      "ndcg_at_4": 0.0,
+      "relevance_at_4": 0.0,
+      "same_activity_at_1": 0,
+      "sql_ms": 0.6206659600138664,
+      "returned": [
+        "bakery-en",
+        "cafe-en",
+        "childcare-en",
+        "tuition-en"
+      ],
+      "grades": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "query": "it_support-en",
+      "split": "development",
+      "task": "different_description",
+      "method": "hybrid",
+      "ndcg_at_4": 0.0,
+      "relevance_at_4": 0.0,
+      "same_activity_at_1": 0,
+      "sql_ms": 0.6727499421685934,
+      "returned": [
+        "cafe-en",
+        "freight-en",
+        "accounting_software-en",
+        "bakery-en"
+      ],
+      "grades": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "query": "it_support-ms",
+      "split": "development",
+      "task": "different_description",
+      "method": "dense",
+      "ndcg_at_4": 0.0,
+      "relevance_at_4": 0.0,
+      "same_activity_at_1": 0,
+      "sql_ms": 0.3575830487534404,
+      "returned": [
+        "cold_chain-ms",
+        "clinic-ms",
+        "accounting-ms",
+        "bakery-ms"
+      ],
+      "grades": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "query": "it_support-ms",
+      "split": "development",
+      "task": "different_description",
+      "method": "lexical",
+      "ndcg_at_4": 0.0,
+      "relevance_at_4": 0.0,
+      "same_activity_at_1": 0,
+      "sql_ms": 0.4881249042227864,
+      "returned": [
+        "accounting-ms",
+        "bakery-ms",
+        "cafe-ms",
+        "childcare-ms"
+      ],
+      "grades": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "query": "it_support-ms",
+      "split": "development",
+      "task": "different_description",
+      "method": "hybrid",
+      "ndcg_at_4": 0.0,
+      "relevance_at_4": 0.0,
+      "same_activity_at_1": 0,
+      "sql_ms": 0.563582987524569,
+      "returned": [
+        "accounting-ms",
+        "cold_chain-ms",
+        "bakery-ms",
+        "cafe-ms"
+      ],
+      "grades": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "query": "clinic-en",
+      "split": "development",
+      "task": "different_description",
+      "method": "dense",
+      "ndcg_at_4": 0.3631143808977028,
+      "relevance_at_4": 0.25,
+      "same_activity_at_1": 0,
+      "sql_ms": 0.36508310586214066,
+      "returned": [
+        "childcare-en",
+        "hotel-en",
+        "clinic-ms",
+        "hotel-ms"
+      ],
+      "grades": [
+        0,
+        0,
+        2,
+        0
+      ]
+    },
+    {
+      "query": "clinic-en",
+      "split": "development",
+      "task": "different_description",
+      "method": "lexical",
+      "ndcg_at_4": 0.0,
+      "relevance_at_4": 0.0,
+      "same_activity_at_1": 0,
+      "sql_ms": 0.46799995470792055,
+      "returned": [
+        "childcare-en",
+        "hotel-en",
+        "cafe-en",
+        "childcare-ms"
+      ],
+      "grades": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "query": "clinic-en",
+      "split": "development",
+      "task": "different_description",
+      "method": "hybrid",
+      "ndcg_at_4": 0.3631143808977028,
+      "relevance_at_4": 0.25,
+      "same_activity_at_1": 0,
+      "sql_ms": 0.5207499489188194,
+      "returned": [
+        "childcare-en",
+        "hotel-en",
+        "clinic-ms",
+        "childcare-ms"
+      ],
+      "grades": [
+        0,
+        0,
+        2,
+        0
+      ]
+    },
+    {
+      "query": "clinic-ms",
+      "split": "development",
+      "task": "different_description",
+      "method": "dense",
+      "ndcg_at_4": 0.3631143808977028,
+      "relevance_at_4": 0.25,
+      "same_activity_at_1": 0,
+      "sql_ms": 0.3572499845176935,
+      "returned": [
+        "childcare-ms",
+        "it_support-ms",
+        "clinic-en",
+        "hotel-en"
+      ],
+      "grades": [
+        0,
+        0,
+        2,
+        0
+      ]
+    },
+    {
+      "query": "clinic-ms",
+      "split": "development",
+      "task": "different_description",
+      "method": "lexical",
+      "ndcg_at_4": 0.0,
+      "relevance_at_4": 0.0,
+      "same_activity_at_1": 0,
+      "sql_ms": 0.4522500094026327,
+      "returned": [
+        "childcare-ms",
+        "hotel-ms",
+        "cafe-ms",
+        "childcare-en"
+      ],
+      "grades": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "query": "clinic-ms",
+      "split": "development",
+      "task": "different_description",
+      "method": "hybrid",
+      "ndcg_at_4": 0.3631143808977028,
+      "relevance_at_4": 0.25,
+      "same_activity_at_1": 0,
+      "sql_ms": 0.7813330739736557,
+      "returned": [
+        "childcare-ms",
+        "hotel-ms",
+        "clinic-en",
+        "cafe-ms"
+      ],
+      "grades": [
+        0,
+        0,
+        2,
+        0
+      ]
+    },
+    {
+      "query": "pharmacy-en",
+      "split": "held_out",
+      "task": "different_description",
+      "method": "dense",
+      "ndcg_at_4": 0.7262287617954056,
+      "relevance_at_4": 0.25,
+      "same_activity_at_1": 1,
+      "sql_ms": 0.4260839195922017,
+      "returned": [
+        "pharmacy-ms",
+        "bakery-ms",
+        "accounting_software-ms",
+        "cafe-en"
+      ],
+      "grades": [
+        2,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "query": "pharmacy-en",
+      "split": "held_out",
+      "task": "different_description",
+      "method": "lexical",
+      "ndcg_at_4": 0.0,
+      "relevance_at_4": 0.0,
+      "same_activity_at_1": 0,
+      "sql_ms": 0.5212500691413879,
+      "returned": [
+        "accounting-en",
+        "bakery-en",
+        "cafe-en",
+        "childcare-en"
+      ],
+      "grades": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "query": "pharmacy-en",
+      "split": "held_out",
+      "task": "different_description",
+      "method": "hybrid",
+      "ndcg_at_4": 0.0,
+      "relevance_at_4": 0.0,
+      "same_activity_at_1": 0,
+      "sql_ms": 0.5454589845612645,
+      "returned": [
+        "cafe-en",
+        "bakery-en",
+        "accounting-en",
+        "tuition-en"
+      ],
+      "grades": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "query": "pharmacy-ms",
+      "split": "held_out",
+      "task": "different_description",
+      "method": "dense",
+      "ndcg_at_4": 0.0,
+      "relevance_at_4": 0.0,
+      "same_activity_at_1": 0,
+      "sql_ms": 0.37687504664063454,
+      "returned": [
+        "tuition-ms",
+        "bakery-ms",
+        "accounting_software-ms",
+        "cafe-ms"
+      ],
+      "grades": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "query": "pharmacy-ms",
+      "split": "held_out",
+      "task": "different_description",
+      "method": "lexical",
+      "ndcg_at_4": 0.0,
+      "relevance_at_4": 0.0,
+      "same_activity_at_1": 0,
+      "sql_ms": 0.47995802015066147,
+      "returned": [
+        "accounting-ms",
+        "bakery-ms",
+        "cafe-ms",
+        "childcare-ms"
+      ],
+      "grades": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "query": "pharmacy-ms",
+      "split": "held_out",
+      "task": "different_description",
+      "method": "hybrid",
+      "ndcg_at_4": 0.0,
+      "relevance_at_4": 0.0,
+      "same_activity_at_1": 0,
+      "sql_ms": 0.52370794583112,
+      "returned": [
+        "bakery-ms",
+        "accounting-ms",
+        "cafe-ms",
+        "tuition-ms"
+      ],
+      "grades": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "query": "hotel-en",
+      "split": "held_out",
+      "task": "different_description",
+      "method": "dense",
+      "ndcg_at_4": 1.0,
+      "relevance_at_4": 0.25,
+      "same_activity_at_1": 1,
+      "sql_ms": 0.34374999813735485,
+      "returned": [
+        "hotel-ms",
+        "childcare-en",
+        "clinic-en",
+        "clinic-ms"
+      ],
+      "grades": [
+        2,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "query": "hotel-en",
+      "split": "held_out",
+      "task": "different_description",
+      "method": "lexical",
+      "ndcg_at_4": 0.5,
+      "relevance_at_4": 0.25,
+      "same_activity_at_1": 0,
+      "sql_ms": 0.4213749198243022,
+      "returned": [
+        "childcare-en",
+        "clinic-en",
+        "hotel-ms",
+        "cafe-en"
+      ],
+      "grades": [
+        0,
+        0,
+        2,
+        0
+      ]
+    },
+    {
+      "query": "hotel-en",
+      "split": "held_out",
+      "task": "different_description",
+      "method": "hybrid",
+      "ndcg_at_4": 0.6309297535714574,
+      "relevance_at_4": 0.25,
+      "same_activity_at_1": 0,
+      "sql_ms": 0.4664580337703228,
+      "returned": [
+        "childcare-en",
+        "hotel-ms",
+        "clinic-en",
+        "cafe-en"
+      ],
+      "grades": [
+        0,
+        2,
+        0,
+        0
+      ]
+    },
+    {
+      "query": "hotel-ms",
+      "split": "held_out",
+      "task": "different_description",
+      "method": "dense",
+      "ndcg_at_4": 1.0,
+      "relevance_at_4": 0.25,
+      "same_activity_at_1": 1,
+      "sql_ms": 0.33679103944450617,
+      "returned": [
+        "hotel-en",
+        "clinic-ms",
+        "clinic-en",
+        "childcare-en"
+      ],
+      "grades": [
+        2,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "query": "hotel-ms",
+      "split": "held_out",
+      "task": "different_description",
+      "method": "lexical",
+      "ndcg_at_4": 0.5,
+      "relevance_at_4": 0.25,
+      "same_activity_at_1": 0,
+      "sql_ms": 0.4058750346302986,
+      "returned": [
+        "childcare-ms",
+        "clinic-ms",
+        "hotel-en",
+        "cafe-ms"
+      ],
+      "grades": [
+        0,
+        0,
+        2,
+        0
+      ]
+    },
+    {
+      "query": "hotel-ms",
+      "split": "held_out",
+      "task": "different_description",
+      "method": "hybrid",
+      "ndcg_at_4": 1.0,
+      "relevance_at_4": 0.25,
+      "same_activity_at_1": 1,
+      "sql_ms": 0.6570830009877682,
+      "returned": [
+        "hotel-en",
+        "clinic-ms",
+        "childcare-ms",
+        "clinic-en"
+      ],
+      "grades": [
+        2,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "query": "childcare-en",
+      "split": "held_out",
+      "task": "different_description",
+      "method": "dense",
+      "ndcg_at_4": 0.3127697035039474,
+      "relevance_at_4": 0.25,
+      "same_activity_at_1": 0,
+      "sql_ms": 0.3683749819174409,
+      "returned": [
+        "clinic-en",
+        "hotel-en",
+        "clinic-ms",
+        "childcare-ms"
+      ],
+      "grades": [
+        0,
+        0,
+        0,
+        2
+      ]
+    },
+    {
+      "query": "childcare-en",
+      "split": "held_out",
+      "task": "different_description",
+      "method": "lexical",
+      "ndcg_at_4": 0.0,
+      "relevance_at_4": 0.0,
+      "same_activity_at_1": 0,
+      "sql_ms": 0.5677499575540423,
+      "returned": [
+        "cafe-en",
+        "clinic-en",
+        "hotel-en",
+        "it_support-en"
+      ],
+      "grades": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "query": "childcare-en",
+      "split": "held_out",
+      "task": "different_description",
+      "method": "hybrid",
+      "ndcg_at_4": 0.0,
+      "relevance_at_4": 0.0,
+      "same_activity_at_1": 0,
+      "sql_ms": 0.6089590024203062,
+      "returned": [
+        "clinic-en",
+        "hotel-en",
+        "cafe-en",
+        "clinic-ms"
+      ],
+      "grades": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "query": "childcare-ms",
+      "split": "held_out",
+      "task": "different_description",
+      "method": "dense",
+      "ndcg_at_4": 0.0,
+      "relevance_at_4": 0.0,
+      "same_activity_at_1": 0,
+      "sql_ms": 0.3707499708980322,
+      "returned": [
+        "clinic-ms",
+        "it_support-ms",
+        "pharmacy-ms",
+        "accounting-ms"
+      ],
+      "grades": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "query": "childcare-ms",
+      "split": "held_out",
+      "task": "different_description",
+      "method": "lexical",
+      "ndcg_at_4": 0.0,
+      "relevance_at_4": 0.0,
+      "same_activity_at_1": 0,
+      "sql_ms": 0.5282090278342366,
+      "returned": [
+        "cafe-ms",
+        "clinic-ms",
+        "hotel-ms",
+        "accounting-ms"
+      ],
+      "grades": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "query": "childcare-ms",
+      "split": "held_out",
+      "task": "different_description",
+      "method": "hybrid",
+      "ndcg_at_4": 0.0,
+      "relevance_at_4": 0.0,
+      "same_activity_at_1": 0,
+      "sql_ms": 0.5501250270754099,
+      "returned": [
+        "clinic-ms",
+        "cafe-ms",
+        "accounting-ms",
+        "bakery-ms"
+      ],
+      "grades": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "query": "tuition-en",
+      "split": "held_out",
+      "task": "different_description",
+      "method": "dense",
+      "ndcg_at_4": 0.15273311123869335,
+      "relevance_at_4": 0.25,
+      "same_activity_at_1": 0,
+      "sql_ms": 0.35258394200354815,
+      "returned": [
+        "accounting_software-ms",
+        "childcare-en",
+        "bakery-ms",
+        "freight-ms"
+      ],
+      "grades": [
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "query": "tuition-en",
+      "split": "held_out",
+      "task": "different_description",
+      "method": "lexical",
+      "ndcg_at_4": 0.0,
+      "relevance_at_4": 0.0,
+      "same_activity_at_1": 0,
+      "sql_ms": 0.5142920417711139,
+      "returned": [
+        "bakery-en",
+        "it_support-en",
+        "accounting-en",
+        "accounting_software-en"
+      ],
+      "grades": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "query": "tuition-en",
+      "split": "held_out",
+      "task": "different_description",
+      "method": "hybrid",
+      "ndcg_at_4": 0.24207625393180188,
+      "relevance_at_4": 0.25,
+      "same_activity_at_1": 0,
+      "sql_ms": 0.5658749723806977,
+      "returned": [
+        "childcare-en",
+        "it_support-en",
+        "accounting-en",
+        "cafe-en"
+      ],
+      "grades": [
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "query": "tuition-ms",
+      "split": "held_out",
+      "task": "different_description",
+      "method": "dense",
+      "ndcg_at_4": 0.0,
+      "relevance_at_4": 0.0,
+      "same_activity_at_1": 0,
+      "sql_ms": 0.3672080347314477,
+      "returned": [
+        "accounting_software-ms",
+        "accounting-ms",
+        "pharmacy-ms",
+        "cold_chain-ms"
+      ],
+      "grades": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "query": "tuition-ms",
+      "split": "held_out",
+      "task": "different_description",
+      "method": "lexical",
+      "ndcg_at_4": 0.0,
+      "relevance_at_4": 0.0,
+      "same_activity_at_1": 0,
+      "sql_ms": 0.5282500060275197,
+      "returned": [
+        "bakery-ms",
+        "accounting-ms",
+        "accounting_software-ms",
+        "cafe-ms"
+      ],
+      "grades": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "query": "tuition-ms",
+      "split": "held_out",
+      "task": "different_description",
+      "method": "hybrid",
+      "ndcg_at_4": 0.0,
+      "relevance_at_4": 0.0,
+      "same_activity_at_1": 0,
+      "sql_ms": 0.662707956507802,
+      "returned": [
+        "accounting_software-ms",
+        "accounting-ms",
+        "bakery-ms",
+        "cold_chain-ms"
+      ],
+      "grades": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "query": "cold_chain-en",
+      "split": "held_out",
+      "task": "different_description",
+      "method": "dense",
+      "ndcg_at_4": 0.346332821766451,
+      "relevance_at_4": 0.5,
+      "same_activity_at_1": 0,
+      "sql_ms": 0.3926670178771019,
+      "returned": [
+        "freight-en",
+        "cafe-en",
+        "bakery-ms",
+        "freight-ms"
+      ],
+      "grades": [
+        1,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "query": "cold_chain-en",
+      "split": "held_out",
+      "task": "different_description",
+      "method": "lexical",
+      "ndcg_at_4": 0.0,
+      "relevance_at_4": 0.0,
+      "same_activity_at_1": 0,
+      "sql_ms": 0.6373330252245069,
+      "returned": [
+        "accounting-en",
+        "bakery-en",
+        "cafe-en",
+        "childcare-en"
+      ],
+      "grades": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "query": "cold_chain-en",
+      "split": "held_out",
+      "task": "different_description",
+      "method": "hybrid",
+      "ndcg_at_4": 0.15273311123869335,
+      "relevance_at_4": 0.25,
+      "same_activity_at_1": 0,
+      "sql_ms": 0.6230840226635337,
+      "returned": [
+        "cafe-en",
+        "freight-en",
+        "bakery-en",
+        "accounting-en"
+      ],
+      "grades": [
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "query": "cold_chain-ms",
+      "split": "held_out",
+      "task": "different_description",
+      "method": "dense",
+      "ndcg_at_4": 0.0,
+      "relevance_at_4": 0.0,
+      "same_activity_at_1": 0,
+      "sql_ms": 0.3673749743029475,
+      "returned": [
+        "accounting-ms",
+        "accounting_software-ms",
+        "bakery-ms",
+        "it_support-ms"
+      ],
+      "grades": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "query": "cold_chain-ms",
+      "split": "held_out",
+      "task": "different_description",
+      "method": "lexical",
+      "ndcg_at_4": 0.0,
+      "relevance_at_4": 0.0,
+      "same_activity_at_1": 0,
+      "sql_ms": 0.5691249389201403,
+      "returned": [
+        "accounting-ms",
+        "bakery-ms",
+        "cafe-ms",
+        "childcare-ms"
+      ],
+      "grades": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "query": "cold_chain-ms",
+      "split": "held_out",
+      "task": "different_description",
+      "method": "hybrid",
+      "ndcg_at_4": 0.0,
+      "relevance_at_4": 0.0,
+      "same_activity_at_1": 0,
+      "sql_ms": 0.6003750022500753,
+      "returned": [
+        "accounting-ms",
+        "bakery-ms",
+        "cafe-ms",
+        "it_support-ms"
+      ],
+      "grades": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "query": "freight-en",
+      "split": "held_out",
+      "task": "different_description",
+      "method": "dense",
+      "ndcg_at_4": 0.12103812696590094,
+      "relevance_at_4": 0.25,
+      "same_activity_at_1": 0,
+      "sql_ms": 0.37170806899666786,
+      "returned": [
+        "cafe-en",
+        "cafe-ms",
+        "cold_chain-en",
+        "bakery-ms"
+      ],
+      "grades": [
+        0,
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "query": "freight-en",
+      "split": "held_out",
+      "task": "different_description",
+      "method": "lexical",
+      "ndcg_at_4": 0.0,
+      "relevance_at_4": 0.0,
+      "same_activity_at_1": 0,
+      "sql_ms": 0.5797500489279628,
+      "returned": [
+        "cafe-en",
+        "accounting-en",
+        "bakery-en",
+        "cafe-ms"
+      ],
+      "grades": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "query": "freight-en",
+      "split": "held_out",
+      "task": "different_description",
+      "method": "hybrid",
+      "ndcg_at_4": 0.12103812696590094,
+      "relevance_at_4": 0.25,
+      "same_activity_at_1": 0,
+      "sql_ms": 0.7429159013554454,
+      "returned": [
+        "cafe-en",
+        "cafe-ms",
+        "cold_chain-en",
+        "it_support-en"
+      ],
+      "grades": [
+        0,
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "query": "freight-ms",
+      "split": "held_out",
+      "task": "different_description",
+      "method": "dense",
+      "ndcg_at_4": 0.12103812696590094,
+      "relevance_at_4": 0.25,
+      "same_activity_at_1": 0,
+      "sql_ms": 0.4130409797653556,
+      "returned": [
+        "bakery-ms",
+        "accounting_software-ms",
+        "cold_chain-ms",
+        "accounting-ms"
+      ],
+      "grades": [
+        0,
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "query": "freight-ms",
+      "split": "held_out",
+      "task": "different_description",
+      "method": "lexical",
+      "ndcg_at_4": 0.0,
+      "relevance_at_4": 0.0,
+      "same_activity_at_1": 0,
+      "sql_ms": 0.47158298548310995,
+      "returned": [
+        "accounting-ms",
+        "bakery-ms",
+        "cafe-ms",
+        "childcare-ms"
+      ],
+      "grades": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "query": "freight-ms",
+      "split": "held_out",
+      "task": "different_description",
+      "method": "hybrid",
+      "ndcg_at_4": 0.12103812696590094,
+      "relevance_at_4": 0.25,
+      "same_activity_at_1": 0,
+      "sql_ms": 0.564207904972136,
+      "returned": [
+        "bakery-ms",
+        "accounting-ms",
+        "cold_chain-ms",
+        "cafe-ms"
+      ],
+      "grades": [
+        0,
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "query": "bakery-en",
+      "split": "development",
+      "task": "cross_language",
+      "method": "dense",
+      "ndcg_at_4": 0.8262346571285599,
+      "relevance_at_4": 0.25,
+      "same_activity_at_1": 1,
+      "sql_ms": 0.33129192888736725,
+      "returned": [
+        "bakery-ms",
+        "pharmacy-ms",
+        "cold_chain-ms",
+        "freight-ms"
+      ],
+      "grades": [
+        2,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "query": "bakery-en",
+      "split": "development",
+      "task": "cross_language",
+      "method": "lexical",
+      "ndcg_at_4": 0.0,
+      "relevance_at_4": 0.0,
+      "same_activity_at_1": 0,
+      "sql_ms": 0.40374998934566975,
+      "returned": [],
+      "grades": []
+    },
+    {
+      "query": "bakery-en",
+      "split": "development",
+      "task": "cross_language",
+      "method": "hybrid",
+      "ndcg_at_4": 0.8262346571285599,
+      "relevance_at_4": 0.25,
+      "same_activity_at_1": 1,
+      "sql_ms": 0.4144590348005295,
+      "returned": [
+        "bakery-ms",
+        "pharmacy-ms",
+        "cold_chain-ms",
+        "freight-ms"
+      ],
+      "grades": [
+        2,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "query": "bakery-ms",
+      "split": "development",
+      "task": "cross_language",
+      "method": "dense",
+      "ndcg_at_4": 0.27541155237618664,
+      "relevance_at_4": 0.25,
+      "same_activity_at_1": 0,
+      "sql_ms": 0.2905830042436719,
+      "returned": [
+        "cafe-en",
+        "freight-en",
+        "it_support-en",
+        "tuition-en"
+      ],
+      "grades": [
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "query": "bakery-ms",
+      "split": "development",
+      "task": "cross_language",
+      "method": "lexical",
+      "ndcg_at_4": 0.0,
+      "relevance_at_4": 0.0,
+      "same_activity_at_1": 0,
+      "sql_ms": 0.3420839784666896,
+      "returned": [],
+      "grades": []
+    },
+    {
+      "query": "bakery-ms",
+      "split": "development",
+      "task": "cross_language",
+      "method": "hybrid",
+      "ndcg_at_4": 0.27541155237618664,
+      "relevance_at_4": 0.25,
+      "same_activity_at_1": 0,
+      "sql_ms": 0.36791700404137373,
+      "returned": [
+        "cafe-en",
+        "freight-en",
+        "it_support-en",
+        "tuition-en"
+      ],
+      "grades": [
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "query": "cafe-en",
+      "split": "development",
+      "task": "cross_language",
+      "method": "dense",
+      "ndcg_at_4": 1.0,
+      "relevance_at_4": 0.5,
+      "same_activity_at_1": 1,
+      "sql_ms": 0.303249922581017,
+      "returned": [
+        "cafe-ms",
+        "bakery-ms",
+        "cold_chain-ms",
+        "pharmacy-ms"
+      ],
+      "grades": [
+        2,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "query": "cafe-en",
+      "split": "development",
+      "task": "cross_language",
+      "method": "lexical",
+      "ndcg_at_4": 0.8262346571285599,
+      "relevance_at_4": 0.25,
+      "same_activity_at_1": 1,
+      "sql_ms": 0.40337489917874336,
+      "returned": [
+        "cafe-ms"
+      ],
+      "grades": [
+        2
+      ]
+    },
+    {
+      "query": "cafe-en",
+      "split": "development",
+      "task": "cross_language",
+      "method": "hybrid",
+      "ndcg_at_4": 1.0,
+      "relevance_at_4": 0.5,
+      "same_activity_at_1": 1,
+      "sql_ms": 0.43537491001188755,
+      "returned": [
+        "cafe-ms",
+        "bakery-ms",
+        "cold_chain-ms",
+        "pharmacy-ms"
+      ],
+      "grades": [
+        2,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "query": "cafe-ms",
+      "split": "development",
+      "task": "cross_language",
+      "method": "dense",
+      "ndcg_at_4": 0.8262346571285599,
+      "relevance_at_4": 0.25,
+      "same_activity_at_1": 1,
+      "sql_ms": 0.31404197216033936,
+      "returned": [
+        "cafe-en",
+        "freight-en",
+        "clinic-en",
+        "it_support-en"
+      ],
+      "grades": [
+        2,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "query": "cafe-ms",
+      "split": "development",
+      "task": "cross_language",
+      "method": "lexical",
+      "ndcg_at_4": 0.8262346571285599,
+      "relevance_at_4": 0.25,
+      "same_activity_at_1": 1,
+      "sql_ms": 0.44608290772885084,
+      "returned": [
+        "cafe-en",
+        "freight-en"
+      ],
+      "grades": [
+        2,
+        0
+      ]
+    },
+    {
+      "query": "cafe-ms",
+      "split": "development",
+      "task": "cross_language",
+      "method": "hybrid",
+      "ndcg_at_4": 0.8262346571285599,
+      "relevance_at_4": 0.25,
+      "same_activity_at_1": 1,
+      "sql_ms": 0.4825419746339321,
+      "returned": [
+        "cafe-en",
+        "freight-en",
+        "clinic-en",
+        "it_support-en"
+      ],
+      "grades": [
+        2,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "query": "accounting-en",
+      "split": "development",
+      "task": "cross_language",
+      "method": "dense",
+      "ndcg_at_4": 0.0,
+      "relevance_at_4": 0.0,
+      "same_activity_at_1": 0,
+      "sql_ms": 0.3260000376030803,
+      "returned": [
+        "bakery-ms",
+        "accounting_software-ms",
+        "cold_chain-ms",
+        "tuition-ms"
+      ],
+      "grades": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "query": "accounting-en",
+      "split": "development",
+      "task": "cross_language",
+      "method": "lexical",
+      "ndcg_at_4": 0.0,
+      "relevance_at_4": 0.0,
+      "same_activity_at_1": 0,
+      "sql_ms": 0.34191692247986794,
+      "returned": [],
+      "grades": []
+    },
+    {
+      "query": "accounting-en",
+      "split": "development",
+      "task": "cross_language",
+      "method": "hybrid",
+      "ndcg_at_4": 0.0,
+      "relevance_at_4": 0.0,
+      "same_activity_at_1": 0,
+      "sql_ms": 0.38766697980463505,
+      "returned": [
+        "bakery-ms",
+        "accounting_software-ms",
+        "cold_chain-ms",
+        "tuition-ms"
+      ],
+      "grades": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "query": "accounting-ms",
+      "split": "development",
+      "task": "cross_language",
+      "method": "dense",
+      "ndcg_at_4": 0.0,
+      "relevance_at_4": 0.0,
+      "same_activity_at_1": 0,
+      "sql_ms": 0.2989580389112234,
+      "returned": [
+        "cafe-en",
+        "childcare-en",
+        "freight-en",
+        "it_support-en"
+      ],
+      "grades": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "query": "accounting-ms",
+      "split": "development",
+      "task": "cross_language",
+      "method": "lexical",
+      "ndcg_at_4": 0.0,
+      "relevance_at_4": 0.0,
+      "same_activity_at_1": 0,
+      "sql_ms": 0.34641590900719166,
+      "returned": [],
+      "grades": []
+    },
+    {
+      "query": "accounting-ms",
+      "split": "development",
+      "task": "cross_language",
+      "method": "hybrid",
+      "ndcg_at_4": 0.0,
+      "relevance_at_4": 0.0,
+      "same_activity_at_1": 0,
+      "sql_ms": 0.39183301851153374,
+      "returned": [
+        "cafe-en",
+        "childcare-en",
+        "freight-en",
+        "it_support-en"
+      ],
+      "grades": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "query": "accounting_software-en",
+      "split": "development",
+      "task": "cross_language",
+      "method": "dense",
+      "ndcg_at_4": 0.5,
+      "relevance_at_4": 0.25,
+      "same_activity_at_1": 0,
+      "sql_ms": 0.303708016872406,
+      "returned": [
+        "bakery-ms",
+        "cold_chain-ms",
+        "accounting_software-ms",
+        "accounting-ms"
+      ],
+      "grades": [
+        0,
+        0,
+        2,
+        0
+      ]
+    },
+    {
+      "query": "accounting_software-en",
+      "split": "development",
+      "task": "cross_language",
+      "method": "lexical",
+      "ndcg_at_4": 0.0,
+      "relevance_at_4": 0.0,
+      "same_activity_at_1": 0,
+      "sql_ms": 0.38691703230142593,
+      "returned": [],
+      "grades": []
+    },
+    {
+      "query": "accounting_software-en",
+      "split": "development",
+      "task": "cross_language",
+      "method": "hybrid",
+      "ndcg_at_4": 0.5,
+      "relevance_at_4": 0.25,
+      "same_activity_at_1": 0,
+      "sql_ms": 0.3719589440152049,
+      "returned": [
+        "bakery-ms",
+        "cold_chain-ms",
+        "accounting_software-ms",
+        "accounting-ms"
+      ],
+      "grades": [
+        0,
+        0,
+        2,
+        0
+      ]
+    },
+    {
+      "query": "accounting_software-ms",
+      "split": "development",
+      "task": "cross_language",
+      "method": "dense",
+      "ndcg_at_4": 0.0,
+      "relevance_at_4": 0.0,
+      "same_activity_at_1": 0,
+      "sql_ms": 0.28129201382398605,
+      "returned": [
+        "tuition-en",
+        "cafe-en",
+        "freight-en",
+        "it_support-en"
+      ],
+      "grades": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "query": "accounting_software-ms",
+      "split": "development",
+      "task": "cross_language",
+      "method": "lexical",
+      "ndcg_at_4": 0.0,
+      "relevance_at_4": 0.0,
+      "same_activity_at_1": 0,
+      "sql_ms": 0.3410410135984421,
+      "returned": [],
+      "grades": []
+    },
+    {
+      "query": "accounting_software-ms",
+      "split": "development",
+      "task": "cross_language",
+      "method": "hybrid",
+      "ndcg_at_4": 0.0,
+      "relevance_at_4": 0.0,
+      "same_activity_at_1": 0,
+      "sql_ms": 0.4554170882329345,
+      "returned": [
+        "tuition-en",
+        "cafe-en",
+        "freight-en",
+        "it_support-en"
+      ],
+      "grades": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "query": "it_support-en",
+      "split": "development",
+      "task": "cross_language",
+      "method": "dense",
+      "ndcg_at_4": 0.0,
+      "relevance_at_4": 0.0,
+      "same_activity_at_1": 0,
+      "sql_ms": 0.3173750592395663,
+      "returned": [
+        "pharmacy-ms",
+        "bakery-ms",
+        "childcare-ms",
+        "cafe-ms"
+      ],
+      "grades": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "query": "it_support-en",
+      "split": "development",
+      "task": "cross_language",
+      "method": "lexical",
+      "ndcg_at_4": 1.0,
+      "relevance_at_4": 0.25,
+      "same_activity_at_1": 1,
+      "sql_ms": 0.39491697680205107,
+      "returned": [
+        "it_support-ms"
+      ],
+      "grades": [
+        2
+      ]
+    },
+    {
+      "query": "it_support-en",
+      "split": "development",
+      "task": "cross_language",
+      "method": "hybrid",
+      "ndcg_at_4": 1.0,
+      "relevance_at_4": 0.25,
+      "same_activity_at_1": 1,
+      "sql_ms": 0.428917002864182,
+      "returned": [
+        "it_support-ms",
+        "pharmacy-ms",
+        "bakery-ms",
+        "childcare-ms"
+      ],
+      "grades": [
+        2,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "query": "it_support-ms",
+      "split": "development",
+      "task": "cross_language",
+      "method": "dense",
+      "ndcg_at_4": 0.0,
+      "relevance_at_4": 0.0,
+      "same_activity_at_1": 0,
+      "sql_ms": 0.3089589299634099,
+      "returned": [
+        "cafe-en",
+        "freight-en",
+        "clinic-en",
+        "childcare-en"
+      ],
+      "grades": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "query": "it_support-ms",
+      "split": "development",
+      "task": "cross_language",
+      "method": "lexical",
+      "ndcg_at_4": 1.0,
+      "relevance_at_4": 0.25,
+      "same_activity_at_1": 1,
+      "sql_ms": 0.3647500416263938,
+      "returned": [
+        "it_support-en"
+      ],
+      "grades": [
+        2
+      ]
+    },
+    {
+      "query": "it_support-ms",
+      "split": "development",
+      "task": "cross_language",
+      "method": "hybrid",
+      "ndcg_at_4": 1.0,
+      "relevance_at_4": 0.25,
+      "same_activity_at_1": 1,
+      "sql_ms": 0.40591706056147814,
+      "returned": [
+        "it_support-en",
+        "cafe-en",
+        "freight-en",
+        "clinic-en"
+      ],
+      "grades": [
+        2,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "query": "clinic-en",
+      "split": "development",
+      "task": "cross_language",
+      "method": "dense",
+      "ndcg_at_4": 0.8262346571285599,
+      "relevance_at_4": 0.25,
+      "same_activity_at_1": 1,
+      "sql_ms": 0.30979199800640345,
+      "returned": [
+        "clinic-ms",
+        "hotel-ms",
+        "childcare-ms",
+        "cafe-ms"
+      ],
+      "grades": [
+        2,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "query": "clinic-en",
+      "split": "development",
+      "task": "cross_language",
+      "method": "lexical",
+      "ndcg_at_4": 0.52129602861432,
+      "relevance_at_4": 0.25,
+      "same_activity_at_1": 0,
+      "sql_ms": 0.3605000674724579,
+      "returned": [
+        "childcare-ms",
+        "clinic-ms",
+        "hotel-ms"
+      ],
+      "grades": [
+        0,
+        2,
+        0
+      ]
+    },
+    {
+      "query": "clinic-en",
+      "split": "development",
+      "task": "cross_language",
+      "method": "hybrid",
+      "ndcg_at_4": 0.8262346571285599,
+      "relevance_at_4": 0.25,
+      "same_activity_at_1": 1,
+      "sql_ms": 0.4163340199738741,
+      "returned": [
+        "clinic-ms",
+        "childcare-ms",
+        "hotel-ms",
+        "cafe-ms"
+      ],
+      "grades": [
+        2,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "query": "clinic-ms",
+      "split": "development",
+      "task": "cross_language",
+      "method": "dense",
+      "ndcg_at_4": 0.8262346571285599,
+      "relevance_at_4": 0.25,
+      "same_activity_at_1": 1,
+      "sql_ms": 0.3105420619249344,
+      "returned": [
+        "clinic-en",
+        "hotel-en",
+        "childcare-en",
+        "cafe-en"
+      ],
+      "grades": [
+        2,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "query": "clinic-ms",
+      "split": "development",
+      "task": "cross_language",
+      "method": "lexical",
+      "ndcg_at_4": 0.52129602861432,
+      "relevance_at_4": 0.25,
+      "same_activity_at_1": 0,
+      "sql_ms": 0.3571249544620514,
+      "returned": [
+        "childcare-en",
+        "clinic-en",
+        "hotel-en"
+      ],
+      "grades": [
+        0,
+        2,
+        0
+      ]
+    },
+    {
+      "query": "clinic-ms",
+      "split": "development",
+      "task": "cross_language",
+      "method": "hybrid",
+      "ndcg_at_4": 0.8262346571285599,
+      "relevance_at_4": 0.25,
+      "same_activity_at_1": 1,
+      "sql_ms": 0.45458402018994093,
+      "returned": [
+        "clinic-en",
+        "childcare-en",
+        "hotel-en",
+        "cafe-en"
+      ],
+      "grades": [
+        2,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "query": "pharmacy-en",
+      "split": "held_out",
+      "task": "cross_language",
+      "method": "dense",
+      "ndcg_at_4": 0.8262346571285599,
+      "relevance_at_4": 0.25,
+      "same_activity_at_1": 1,
+      "sql_ms": 0.3173330333083868,
+      "returned": [
+        "pharmacy-ms",
+        "bakery-ms",
+        "accounting_software-ms",
+        "freight-ms"
+      ],
+      "grades": [
+        2,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "query": "pharmacy-en",
+      "split": "held_out",
+      "task": "cross_language",
+      "method": "lexical",
+      "ndcg_at_4": 0.0,
+      "relevance_at_4": 0.0,
+      "same_activity_at_1": 0,
+      "sql_ms": 0.3409170312806964,
+      "returned": [],
+      "grades": []
+    },
+    {
+      "query": "pharmacy-en",
+      "split": "held_out",
+      "task": "cross_language",
+      "method": "hybrid",
+      "ndcg_at_4": 0.8262346571285599,
+      "relevance_at_4": 0.25,
+      "same_activity_at_1": 1,
+      "sql_ms": 0.36879198160022497,
+      "returned": [
+        "pharmacy-ms",
+        "bakery-ms",
+        "accounting_software-ms",
+        "freight-ms"
+      ],
+      "grades": [
+        2,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "query": "pharmacy-ms",
+      "split": "held_out",
+      "task": "cross_language",
+      "method": "dense",
+      "ndcg_at_4": 0.35583989829307827,
+      "relevance_at_4": 0.25,
+      "same_activity_at_1": 0,
+      "sql_ms": 0.2951669739559293,
+      "returned": [
+        "cafe-en",
+        "it_support-en",
+        "freight-en",
+        "pharmacy-en"
+      ],
+      "grades": [
+        0,
+        0,
+        0,
+        2
+      ]
+    },
+    {
+      "query": "pharmacy-ms",
+      "split": "held_out",
+      "task": "cross_language",
+      "method": "lexical",
+      "ndcg_at_4": 0.0,
+      "relevance_at_4": 0.0,
+      "same_activity_at_1": 0,
+      "sql_ms": 0.3277920186519623,
+      "returned": [],
+      "grades": []
+    },
+    {
+      "query": "pharmacy-ms",
+      "split": "held_out",
+      "task": "cross_language",
+      "method": "hybrid",
+      "ndcg_at_4": 0.35583989829307827,
+      "relevance_at_4": 0.25,
+      "same_activity_at_1": 0,
+      "sql_ms": 0.36866706795990467,
+      "returned": [
+        "cafe-en",
+        "it_support-en",
+        "freight-en",
+        "pharmacy-en"
+      ],
+      "grades": [
+        0,
+        0,
+        0,
+        2
+      ]
+    },
+    {
+      "query": "hotel-en",
+      "split": "held_out",
+      "task": "cross_language",
+      "method": "dense",
+      "ndcg_at_4": 1.0,
+      "relevance_at_4": 0.25,
+      "same_activity_at_1": 1,
+      "sql_ms": 0.30862505082041025,
+      "returned": [
+        "hotel-ms",
+        "clinic-ms",
+        "childcare-ms",
+        "cafe-ms"
+      ],
+      "grades": [
+        2,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "query": "hotel-en",
+      "split": "held_out",
+      "task": "cross_language",
+      "method": "lexical",
+      "ndcg_at_4": 1.0,
+      "relevance_at_4": 0.25,
+      "same_activity_at_1": 1,
+      "sql_ms": 0.4562090616673231,
+      "returned": [
+        "hotel-ms",
+        "childcare-ms",
+        "clinic-ms"
+      ],
+      "grades": [
+        2,
+        0,
+        0
+      ]
+    },
+    {
+      "query": "hotel-en",
+      "split": "held_out",
+      "task": "cross_language",
+      "method": "hybrid",
+      "ndcg_at_4": 1.0,
+      "relevance_at_4": 0.25,
+      "same_activity_at_1": 1,
+      "sql_ms": 0.3766660811379552,
+      "returned": [
+        "hotel-ms",
+        "childcare-ms",
+        "clinic-ms",
+        "cafe-ms"
+      ],
+      "grades": [
+        2,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "query": "hotel-ms",
+      "split": "held_out",
+      "task": "cross_language",
+      "method": "dense",
+      "ndcg_at_4": 1.0,
+      "relevance_at_4": 0.25,
+      "same_activity_at_1": 1,
+      "sql_ms": 0.2925409935414791,
+      "returned": [
+        "hotel-en",
+        "clinic-en",
+        "childcare-en",
+        "cafe-en"
+      ],
+      "grades": [
+        2,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "query": "hotel-ms",
+      "split": "held_out",
+      "task": "cross_language",
+      "method": "lexical",
+      "ndcg_at_4": 1.0,
+      "relevance_at_4": 0.25,
+      "same_activity_at_1": 1,
+      "sql_ms": 0.343875028192997,
+      "returned": [
+        "hotel-en",
+        "childcare-en",
+        "clinic-en"
+      ],
+      "grades": [
+        2,
+        0,
+        0
+      ]
+    },
+    {
+      "query": "hotel-ms",
+      "split": "held_out",
+      "task": "cross_language",
+      "method": "hybrid",
+      "ndcg_at_4": 1.0,
+      "relevance_at_4": 0.25,
+      "same_activity_at_1": 1,
+      "sql_ms": 0.4164580022916198,
+      "returned": [
+        "hotel-en",
+        "childcare-en",
+        "clinic-en",
+        "cafe-en"
+      ],
+      "grades": [
+        2,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "query": "childcare-en",
+      "split": "held_out",
+      "task": "cross_language",
+      "method": "dense",
+      "ndcg_at_4": 0.52129602861432,
+      "relevance_at_4": 0.25,
+      "same_activity_at_1": 0,
+      "sql_ms": 0.30466599855571985,
+      "returned": [
+        "clinic-ms",
+        "childcare-ms",
+        "hotel-ms",
+        "pharmacy-ms"
+      ],
+      "grades": [
+        0,
+        2,
+        0,
+        0
+      ]
+    },
+    {
+      "query": "childcare-en",
+      "split": "held_out",
+      "task": "cross_language",
+      "method": "lexical",
+      "ndcg_at_4": 0.8262346571285599,
+      "relevance_at_4": 0.25,
+      "same_activity_at_1": 1,
+      "sql_ms": 0.3808749606832862,
+      "returned": [
+        "childcare-ms",
+        "clinic-ms",
+        "hotel-ms"
+      ],
+      "grades": [
+        2,
+        0,
+        0
+      ]
+    },
+    {
+      "query": "childcare-en",
+      "split": "held_out",
+      "task": "cross_language",
+      "method": "hybrid",
+      "ndcg_at_4": 0.8262346571285599,
+      "relevance_at_4": 0.25,
+      "same_activity_at_1": 1,
+      "sql_ms": 0.41733391117304564,
+      "returned": [
+        "childcare-ms",
+        "clinic-ms",
+        "hotel-ms",
+        "pharmacy-ms"
+      ],
+      "grades": [
+        2,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "query": "childcare-ms",
+      "split": "held_out",
+      "task": "cross_language",
+      "method": "dense",
+      "ndcg_at_4": 0.8262346571285599,
+      "relevance_at_4": 0.25,
+      "same_activity_at_1": 1,
+      "sql_ms": 0.3262910759076476,
+      "returned": [
+        "childcare-en",
+        "clinic-en",
+        "hotel-en",
+        "cafe-en"
+      ],
+      "grades": [
+        2,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "query": "childcare-ms",
+      "split": "held_out",
+      "task": "cross_language",
+      "method": "lexical",
+      "ndcg_at_4": 0.8262346571285599,
+      "relevance_at_4": 0.25,
+      "same_activity_at_1": 1,
+      "sql_ms": 0.4520830698311329,
+      "returned": [
+        "childcare-en",
+        "clinic-en",
+        "hotel-en"
+      ],
+      "grades": [
+        2,
+        0,
+        0
+      ]
+    },
+    {
+      "query": "childcare-ms",
+      "split": "held_out",
+      "task": "cross_language",
+      "method": "hybrid",
+      "ndcg_at_4": 0.8262346571285599,
+      "relevance_at_4": 0.25,
+      "same_activity_at_1": 1,
+      "sql_ms": 0.4211250925436616,
+      "returned": [
+        "childcare-en",
+        "clinic-en",
+        "hotel-en",
+        "cafe-en"
+      ],
+      "grades": [
+        2,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "query": "tuition-en",
+      "split": "held_out",
+      "task": "cross_language",
+      "method": "dense",
+      "ndcg_at_4": 0.35583989829307827,
+      "relevance_at_4": 0.25,
+      "same_activity_at_1": 0,
+      "sql_ms": 0.29733299743384123,
+      "returned": [
+        "accounting_software-ms",
+        "bakery-ms",
+        "freight-ms",
+        "tuition-ms"
+      ],
+      "grades": [
+        0,
+        0,
+        0,
+        2
+      ]
+    },
+    {
+      "query": "tuition-en",
+      "split": "held_out",
+      "task": "cross_language",
+      "method": "lexical",
+      "ndcg_at_4": 0.0,
+      "relevance_at_4": 0.0,
+      "same_activity_at_1": 0,
+      "sql_ms": 0.37879194132983685,
+      "returned": [],
+      "grades": []
+    },
+    {
+      "query": "tuition-en",
+      "split": "held_out",
+      "task": "cross_language",
+      "method": "hybrid",
+      "ndcg_at_4": 0.35583989829307827,
+      "relevance_at_4": 0.25,
+      "same_activity_at_1": 0,
+      "sql_ms": 0.3890830557793379,
+      "returned": [
+        "accounting_software-ms",
+        "bakery-ms",
+        "freight-ms",
+        "tuition-ms"
+      ],
+      "grades": [
+        0,
+        0,
+        0,
+        2
+      ]
+    },
+    {
+      "query": "tuition-ms",
+      "split": "held_out",
+      "task": "cross_language",
+      "method": "dense",
+      "ndcg_at_4": 0.8262346571285599,
+      "relevance_at_4": 0.25,
+      "same_activity_at_1": 1,
+      "sql_ms": 0.3299160161986947,
+      "returned": [
+        "tuition-en",
+        "cafe-en",
+        "it_support-en",
+        "freight-en"
+      ],
+      "grades": [
+        2,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "query": "tuition-ms",
+      "split": "held_out",
+      "task": "cross_language",
+      "method": "lexical",
+      "ndcg_at_4": 0.0,
+      "relevance_at_4": 0.0,
+      "same_activity_at_1": 0,
+      "sql_ms": 0.36066595930606127,
+      "returned": [],
+      "grades": []
+    },
+    {
+      "query": "tuition-ms",
+      "split": "held_out",
+      "task": "cross_language",
+      "method": "hybrid",
+      "ndcg_at_4": 0.8262346571285599,
+      "relevance_at_4": 0.25,
+      "same_activity_at_1": 1,
+      "sql_ms": 0.7739169523119926,
+      "returned": [
+        "tuition-en",
+        "cafe-en",
+        "it_support-en",
+        "freight-en"
+      ],
+      "grades": [
+        2,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "query": "cold_chain-en",
+      "split": "held_out",
+      "task": "cross_language",
+      "method": "dense",
+      "ndcg_at_4": 0.58688267143572,
+      "relevance_at_4": 0.5,
+      "same_activity_at_1": 0,
+      "sql_ms": 0.30862505082041025,
+      "returned": [
+        "bakery-ms",
+        "freight-ms",
+        "cold_chain-ms",
+        "accounting_software-ms"
+      ],
+      "grades": [
+        0,
+        1,
+        2,
+        0
+      ]
+    },
+    {
+      "query": "cold_chain-en",
+      "split": "held_out",
+      "task": "cross_language",
+      "method": "lexical",
+      "ndcg_at_4": 0.0,
+      "relevance_at_4": 0.0,
+      "same_activity_at_1": 0,
+      "sql_ms": 0.35966699942946434,
+      "returned": [],
+      "grades": []
+    },
+    {
+      "query": "cold_chain-en",
+      "split": "held_out",
+      "task": "cross_language",
+      "method": "hybrid",
+      "ndcg_at_4": 0.58688267143572,
+      "relevance_at_4": 0.5,
+      "same_activity_at_1": 0,
+      "sql_ms": 0.3992499550804496,
+      "returned": [
+        "bakery-ms",
+        "freight-ms",
+        "cold_chain-ms",
+        "accounting_software-ms"
+      ],
+      "grades": [
+        0,
+        1,
+        2,
+        0
+      ]
+    },
+    {
+      "query": "cold_chain-ms",
+      "split": "held_out",
+      "task": "cross_language",
+      "method": "dense",
+      "ndcg_at_4": 0.5296052411645183,
+      "relevance_at_4": 0.5,
+      "same_activity_at_1": 0,
+      "sql_ms": 0.3101660404354334,
+      "returned": [
+        "cafe-en",
+        "freight-en",
+        "childcare-en",
+        "cold_chain-en"
+      ],
+      "grades": [
+        0,
+        1,
+        0,
+        2
+      ]
+    },
+    {
+      "query": "cold_chain-ms",
+      "split": "held_out",
+      "task": "cross_language",
+      "method": "lexical",
+      "ndcg_at_4": 0.0,
+      "relevance_at_4": 0.0,
+      "same_activity_at_1": 0,
+      "sql_ms": 0.3550840774551034,
+      "returned": [],
+      "grades": []
+    },
+    {
+      "query": "cold_chain-ms",
+      "split": "held_out",
+      "task": "cross_language",
+      "method": "hybrid",
+      "ndcg_at_4": 0.5296052411645183,
+      "relevance_at_4": 0.5,
+      "same_activity_at_1": 0,
+      "sql_ms": 0.40900008752942085,
+      "returned": [
+        "cafe-en",
+        "freight-en",
+        "childcare-en",
+        "cold_chain-en"
+      ],
+      "grades": [
+        0,
+        1,
+        0,
+        2
+      ]
+    },
+    {
+      "query": "freight-en",
+      "split": "held_out",
+      "task": "cross_language",
+      "method": "dense",
+      "ndcg_at_4": 0.11861329943102608,
+      "relevance_at_4": 0.25,
+      "same_activity_at_1": 0,
+      "sql_ms": 0.34420902375131845,
+      "returned": [
+        "cafe-ms",
+        "bakery-ms",
+        "it_support-ms",
+        "cold_chain-ms"
+      ],
+      "grades": [
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "query": "freight-en",
+      "split": "held_out",
+      "task": "cross_language",
+      "method": "lexical",
+      "ndcg_at_4": 0.0,
+      "relevance_at_4": 0.0,
+      "same_activity_at_1": 0,
+      "sql_ms": 0.38412504363805056,
+      "returned": [
+        "cafe-ms"
+      ],
+      "grades": [
+        0
+      ]
+    },
+    {
+      "query": "freight-en",
+      "split": "held_out",
+      "task": "cross_language",
+      "method": "hybrid",
+      "ndcg_at_4": 0.11861329943102608,
+      "relevance_at_4": 0.25,
+      "same_activity_at_1": 0,
+      "sql_ms": 0.4112499300390482,
+      "returned": [
+        "cafe-ms",
+        "bakery-ms",
+        "it_support-ms",
+        "cold_chain-ms"
+      ],
+      "grades": [
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "query": "freight-ms",
+      "split": "held_out",
+      "task": "cross_language",
+      "method": "dense",
+      "ndcg_at_4": 0.531730627995306,
+      "relevance_at_4": 0.5,
+      "same_activity_at_1": 0,
+      "sql_ms": 0.31158397905528545,
+      "returned": [
+        "cafe-en",
+        "tuition-en",
+        "freight-en",
+        "cold_chain-en"
+      ],
+      "grades": [
+        0,
+        0,
+        2,
+        1
+      ]
+    },
+    {
+      "query": "freight-ms",
+      "split": "held_out",
+      "task": "cross_language",
+      "method": "lexical",
+      "ndcg_at_4": 0.0,
+      "relevance_at_4": 0.0,
+      "same_activity_at_1": 0,
+      "sql_ms": 0.32400002237409353,
+      "returned": [],
+      "grades": []
+    },
+    {
+      "query": "freight-ms",
+      "split": "held_out",
+      "task": "cross_language",
+      "method": "hybrid",
+      "ndcg_at_4": 0.531730627995306,
+      "relevance_at_4": 0.5,
+      "same_activity_at_1": 0,
+      "sql_ms": 0.4283749731257558,
+      "returned": [
+        "cafe-en",
+        "tuition-en",
+        "freight-en",
+        "cold_chain-en"
+      ],
+      "grades": [
+        0,
+        0,
+        2,
+        1
+      ]
+    }
+  ]
+}

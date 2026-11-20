@@ -1,0 +1,14 @@
+{
+  "model": "microsoft/harrier-oss-v1-0.6b@f9b9dc8d367d443f2479d27aa5d8d2850c0774ee:nfkc-whitespace-v1:sts-last-token-cpu-f32-512-v1",
+  "provider": "PyTorch CPU",
+  "dimensions": 1024,
+  "threads": 2,
+  "unique_normalized_feed_descriptions": 177,
+  "initialization_seconds": 5.485563333961181,
+  "embedding_wall_seconds": 17.520170583040453,
+  "embedding_cpu_seconds": 18.522115,
+  "descriptions_per_second": 10.102641361913236,
+  "peak_process_rss_mib": 1879.0625,
+  "cache_hit_avoided_inference": true,
+  "limitations": "Single local process with cached artifacts; RSS excludes database/broker; not cold-download time."
+}

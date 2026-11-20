@@ -1,0 +1,11 @@
+{
+  "tests": 49,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "seconds": 4.125,
+  "python": "3.14.5",
+  "database": "PostgreSQL 18.7 / PGlite 0.5.17 with pgvector",
+  "broker": "native RabbitMQ 3.13.7 / Erlang 26.2.5.21",
+  "native_postgres_16_compose_verified": false
+}

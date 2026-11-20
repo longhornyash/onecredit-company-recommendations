@@ -1,0 +1,136 @@
+{
+  "started_at_utc": "2026-11-20T03:16:49.595156+00:00",
+  "state": "passed",
+  "model": "microsoft/harrier-oss-v1-0.6b@f9b9dc8d367d443f2479d27aa5d8d2850c0774ee:nfkc-whitespace-v1:sts-last-token-cpu-f32-512-v1",
+  "embedding_dimensions": 1024,
+  "feed_sha256": "3c479dbc3bf0dd3ec9a10a4a31ab52d5f43471aa5c875dcaf3d182e79962d73b",
+  "stages": [
+    {
+      "name": "initialize",
+      "wall_seconds": 0.11109804199077189,
+      "exit_code": 0
+    },
+    {
+      "name": "publish",
+      "wall_seconds": 1.8330476249102503,
+      "exit_code": 0
+    },
+    {
+      "name": "audit",
+      "wall_seconds": 0.2282134999986738,
+      "exit_code": 0
+    },
+    {
+      "name": "index_verification",
+      "wall_seconds": 25.103792457957752,
+      "exit_code": 0
+    },
+    {
+      "name": "http_demo",
+      "wall_seconds": 0.5710786249255762,
+      "exit_code": 0
+    },
+    {
+      "name": "http_benchmark",
+      "wall_seconds": 10.58480624994263,
+      "exit_code": 0
+    },
+    {
+      "name": "recommendation_evaluation",
+      "wall_seconds": 9.491417584009469,
+      "exit_code": 0
+    },
+    {
+      "name": "cpu_memory_benchmark",
+      "wall_seconds": 23.665834207902662,
+      "exit_code": 0
+    },
+    {
+      "name": "replay_publish",
+      "wall_seconds": 1.052799666998908,
+      "exit_code": 0
+    },
+    {
+      "name": "replay_consume",
+      "wall_seconds": 7.872229958069511,
+      "exit_code": 0
+    }
+  ],
+  "database_schema": "pipeline_20261120_031649_a82608c3",
+  "broker": {
+    "ready_messages": 0,
+    "consumers": 0,
+    "product": "RabbitMQ",
+    "version": "3.13.7"
+  },
+  "database_version": "PostgreSQL 18.7 (PGlite 0.5.17) on wasm32-unknown-emscripten, compiled by emcc (Emscripten gcc/clang-like replacement + linker emulating GNU ld) 6.0.13 (e13ee988ce3d87a738dd8f3661d02223308c412a), 32-bit",
+  "native_postgres16_verified": false,
+  "consumer_startup_seconds": 6.163492874940857,
+  "publish_to_drain_wall_seconds": 26.486409042030573,
+  "drain_idle_shutdown_seconds": 5,
+  "ingestion": {
+    "timestamp": "2026-11-20T03:17:21.766276+00:00",
+    "event": "consumer_complete",
+    "counts": {
+      "applied": 2343,
+      "duplicate": 68,
+      "rejected": 41,
+      "stale": 66
+    },
+    "model_inferences": 177,
+    "processing_span_seconds": 20.655817,
+    "messages_per_second": 121.90270663222859,
+    "sum_message_processing_seconds": 20.57091
+  },
+  "audit": {
+    "feed_messages": 2518,
+    "feed_unique_bodies": 2450,
+    "expected_company_records": 2022,
+    "actual_company_records": 2022,
+    "expected_active": 2014,
+    "expected_eligible": 1971,
+    "actual_searchable": 1971,
+    "rejected_feed_lines_by_reason": {
+      "updatedAt: invalid or ambiguous timestamp": 21,
+      "invalid JSON": 5,
+      "registrationNumber required": 7,
+      "event must be a JSON object": 6,
+      "data must be an object for upsert": 4,
+      "registrationNumber: expected string or null": 3
+    },
+    "processing_outcomes": {
+      "applied": 2343,
+      "rejected": 41,
+      "stale": 66
+    },
+    "missing_message_bodies": 0,
+    "company_version_mismatches": [],
+    "unexpected_company_records": [],
+    "unexpected_message_bodies": 0,
+    "passed": true
+  },
+  "search_algorithm": "verified HNSW with exact fallback",
+  "replay": {
+    "timestamp": "2026-11-20T03:18:40.191288+00:00",
+    "event": "consumer_complete",
+    "counts": {
+      "duplicate": 2518
+    },
+    "model_inferences": 0,
+    "processing_span_seconds": 0.8705719999999999,
+    "messages_per_second": 2892.3512357392615,
+    "sum_message_processing_seconds": 0.8148
+  },
+  "final_queue": {
+    "ready_messages": 0,
+    "consumers": 0,
+    "product": "RabbitMQ",
+    "version": "3.13.7"
+  },
+  "limitations": [
+    "Single-machine warm performance study, not a production SLO.",
+    "Quality fixture has provisional judgments; independent review required.",
+    "This run is not native PostgreSQL 16 verification; inspect database_version."
+  ],
+  "completed_at_utc": "2026-11-20T03:18:40.958444+00:00"
+}

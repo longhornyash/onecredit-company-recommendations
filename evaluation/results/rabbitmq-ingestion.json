@@ -1,0 +1,15 @@
+{
+  "transport": "RabbitMQ",
+  "broker_version": "3.13.7",
+  "runtime": "Erlang 26.2.5.21",
+  "publisher": "unmodified producer/publish.py",
+  "counts": {
+    "applied": 2343,
+    "duplicate": 68,
+    "rejected": 41,
+    "stale": 66
+  },
+  "model_inferences": 177,
+  "sum_message_processing_seconds": 3.8607400000000003,
+  "database": "PostgreSQL 18.7 / PGlite 0.5.17; not native PostgreSQL 16"
+}

@@ -1,0 +1,13 @@
+{
+  "workflow_url": "https://github.com/longhornyash/onecredit-company-recommendations/actions/runs/44676002430",
+  "commit": "2b4fa29",
+  "environment": "GitHub-hosted Ubuntu with unchanged assessment Docker Compose (PostgreSQL 16 / pgvector 0.8.7 and RabbitMQ 3.13.7)",
+  "tests": 52,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "seconds": 13.799,
+  "timestamp": "2026-11-20T04:41:09.565959+00:00",
+  "lint": "passed",
+  "format": "passed"
+}

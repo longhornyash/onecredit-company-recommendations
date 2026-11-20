@@ -6,3 +6,6 @@ __pycache__/
 .pyrefly/
 .env
 .DS_Store
+.models/
+*.log
+test-results.xml

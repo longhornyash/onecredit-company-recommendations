@@ -1,0 +1,42 @@
+{
+  "runtime": "3.14.4 (main, Aug 20 2026, 10:41:58) [GCC 15.2.0]",
+  "platform": "Linux-7.0.0-1020-azure-x86_64-with-glibc2.43",
+  "database_version": "PostgreSQL 16.16 (Debian 16.16-1.pgdg12+1) on x86_64-pc-linux-gnu, compiled by gcc (Debian 12.2.0-14+deb12u1) 12.2.0, 64-bit",
+  "model": "microsoft/harrier-oss-v1-0.6b@f9b9dc8d367d443f2479d27aa5d8d2850c0774ee:nfkc-whitespace-v1:sts-last-token-cpu-f32-512-v1",
+  "source_company_population": 1971,
+  "method": "dense",
+  "search_algorithm": "hnsw",
+  "measurements": [
+    {
+      "concurrency": 1,
+      "requests": 1971,
+      "distinct_source_companies": 1971,
+      "errors": 0,
+      "p50_ms": 3.3742090000146163,
+      "p95_ms": 4.208037999973158,
+      "max_ms": 10.243333999994775,
+      "requests_per_second": 281.43223853857523
+    },
+    {
+      "concurrency": 8,
+      "requests": 1971,
+      "distinct_source_companies": 1971,
+      "errors": 0,
+      "p50_ms": 13.058528000016167,
+      "p95_ms": 19.007477000002382,
+      "max_ms": 34.657858999992186,
+      "requests_per_second": 578.7537408699457
+    },
+    {
+      "concurrency": 32,
+      "requests": 1971,
+      "distinct_source_companies": 1971,
+      "errors": 0,
+      "p50_ms": 57.5603069999886,
+      "p95_ms": 75.36549700000705,
+      "max_ms": 87.32254599999578,
+      "requests_per_second": 532.9725776888133
+    }
+  ],
+  "limitations": "Local warm HTTP smoke test; no durability, availability, or production SLO claim."
+}

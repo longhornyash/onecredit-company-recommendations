@@ -1,0 +1,58 @@
+{
+  "broker": "RabbitMQ 3.13.7",
+  "database": "PostgreSQL 18.7 / PGlite 0.5.17",
+  "fault": "SIGKILL of actual consumer after at least 100 committed unique events",
+  "committed_unique_events_at_kill": 102,
+  "killed_process_exit_code": -9,
+  "recovery_summary": {
+    "timestamp": "2026-11-20T02:42:52.892500+00:00",
+    "event": "consumer_complete",
+    "counts": {
+      "applied": 2244,
+      "rejected": 38,
+      "duplicate": 63,
+      "stale": 66
+    },
+    "model_inferences": 113
+  },
+  "audit_after_recovery": {
+    "feed_messages": 2518,
+    "feed_unique_bodies": 2450,
+    "expected_company_records": 2022,
+    "actual_company_records": 2022,
+    "expected_active": 2014,
+    "expected_eligible": 1971,
+    "actual_searchable": 1971,
+    "rejected_feed_lines_by_reason": {
+      "updatedAt: invalid or ambiguous timestamp": 21,
+      "invalid JSON": 5,
+      "registrationNumber required": 7,
+      "event must be a JSON object": 6,
+      "data must be an object for upsert": 4,
+      "registrationNumber: expected string or null": 3
+    },
+    "processing_outcomes": {
+      "applied": 2343,
+      "rejected": 41,
+      "stale": 66
+    },
+    "missing_message_bodies": 0,
+    "company_version_mismatches": [],
+    "unexpected_company_records": [],
+    "unexpected_message_bodies": 0,
+    "passed": true
+  },
+  "second_full_replay": {
+    "timestamp": "2026-11-20T02:42:57.587687+00:00",
+    "event": "consumer_complete",
+    "counts": {
+      "duplicate": 2518
+    },
+    "model_inferences": 0
+  },
+  "queue_after_replay": {
+    "ready_messages": 0,
+    "consumers": 0
+  },
+  "passed": true
+}

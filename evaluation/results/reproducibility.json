@@ -1,0 +1,12 @@
+{
+  "fresh_archive_extraction": true,
+  "fresh_uv_sync_locked": true,
+  "tests": 49,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "ruff_check_passed": true,
+  "ruff_format_check_passed": true,
+  "feed_sha256": "3c479dbc3bf0dd3ec9a10a4a31ab52d5f43471aa5c875dcaf3d182e79962d73b",
+  "environment": "same native RabbitMQ 3.13.7 / PostgreSQL-WASM fallback as tests.json"
+}

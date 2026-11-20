@@ -1,0 +1,36 @@
+{
+  "registrationNumber": "SYN-001550",
+  "method": "dense",
+  "scoreType": "cosine_similarity",
+  "modelVersion": "intfloat/multilingual-e5-small@614241f622f53c4eeff9890bdc4f31cfecc418b3:nfkc-whitespace-v1:symmetric-v1",
+  "results": [
+    {
+      "registrationNumber": "SYN-000539",
+      "companyName": "Seri Sejahtera Food Sdn. Bhd.",
+      "industry": "Food & Beverage",
+      "state": "Johor",
+      "score": 1.0
+    },
+    {
+      "registrationNumber": "SYN-000344",
+      "companyName": "Harmoni Maju Kopi Sdn. Bhd.",
+      "industry": "Food & Beverage",
+      "state": "Kedah",
+      "score": 0.9590138482753594
+    },
+    {
+      "registrationNumber": "SYN-000463",
+      "companyName": "Sinar Unity Kopi PLT",
+      "industry": "Food & Beverage",
+      "state": "Kuala Lumpur",
+      "score": 0.9590138482753594
+    },
+    {
+      "registrationNumber": "SYN-001007",
+      "companyName": "Prima Seri Food Trading",
+      "industry": "Food & Beverage",
+      "state": "Kuala Lumpur",
+      "score": 0.9590138482753594
+    }
+  ]
+}

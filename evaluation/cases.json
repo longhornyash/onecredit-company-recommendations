@@ -1,0 +1,24 @@
+{
+  "version": "2026.11-v1",
+  "provenance": "provisional activity-family judgments over verbatim descriptions in the official synthetic feed. Requires independent bilingual review before treating this as a human gold standard. Labels are never used by production retrieval.",
+  "families": [
+    {"id":"bakery","split":"development","en":"Bakery producing bread, cakes and pastries for retail outlets","ms":"Pengeluaran roti dan kek untuk kedai runcit"},
+    {"id":"cafe","split":"development","en":"Operating cafes and coffee shops in the Klang Valley","ms":"Mengusahakan kedai kopi dan kafe di the Klang Valley"},
+    {"id":"accounting","split":"development","en":"Accounting, tax and company secretarial services","ms":"Perkhidmatan perakaunan, cukai dan kesetiausahaan syarikat"},
+    {"id":"accounting_software","split":"development","en":"Software development for small business accounting","ms":"Pembangunan perisian perakaunan untuk perniagaan kecil"},
+    {"id":"it_support","split":"development","en":"IT support and network installation for offices in Melaka","ms":"Sokongan IT dan pemasangan rangkaian pejabat"},
+    {"id":"clinic","split":"development","en":"General practice clinic in Penang","ms":"Klinik perubatan am di Penang"},
+    {"id":"pharmacy","split":"held_out","en":"Community pharmacy and health supplements","ms":"Farmasi komuniti dan makanan tambahan"},
+    {"id":"hotel","split":"held_out","en":"Boutique hotel in Penang","ms":"Hotel butik di Penang"},
+    {"id":"childcare","split":"held_out","en":"Private kindergarten and childcare in Penang","ms":"Tadika swasta dan taska di Penang"},
+    {"id":"tuition","split":"held_out","en":"Tuition centre for primary and secondary students","ms":"Pusat tuisyen untuk pelajar sekolah rendah dan menengah"},
+    {"id":"cold_chain","split":"held_out","en":"Cold chain transport and storage of frozen goods","ms":"Perkhidmatan pengangkutan dan penyimpanan barangan sejuk beku"},
+    {"id":"freight","split":"held_out","en":"Freight forwarding and customs brokerage at Port Klang","ms":"Agensi penghantaran fret dan kastam"}
+  ],
+  "related_family_pairs": [["bakery","cafe"],["clinic","pharmacy"],["childcare","tuition"],["cold_chain","freight"]],
+  "hard_negative_notes": [
+    "Accounting services versus accounting software share terms but serve different activities (grade 0).",
+    "Childcare versus tuition is related (grade 1), not the same activity (grade 2).",
+    "Medical clinics versus pharmacies are related (grade 1), not interchangeable."
+  ]
+}

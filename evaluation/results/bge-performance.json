@@ -1,0 +1,13 @@
+{
+  "model": "BAAI/bge-small-en-v1.5@aa8f8b060edb00e03bfdd08813a2949946c8ba55:nfkc-whitespace-v1:symmetric-v1",
+  "provider": "CPUExecutionProvider",
+  "threads": 2,
+  "unique_normalized_feed_descriptions": 177,
+  "initialization_seconds": 0.25995925010647625,
+  "embedding_wall_seconds": 1.1978773339651525,
+  "embedding_cpu_seconds": 2.387721,
+  "descriptions_per_second": 147.7613733737691,
+  "peak_process_rss_mib": 294.984375,
+  "cache_hit_avoided_inference": true,
+  "limitations": "Single local process with cached artifacts; RSS excludes database/broker; not cold-download time."
+}

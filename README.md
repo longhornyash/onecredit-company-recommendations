@@ -1,197 +1,118 @@
-# MLE Take-Home: Company Recommendation System
+# OneCredit company recommendations
 
-Welcome to the **Machine Learning Engineer** take-home from the OneCredit Data & AI team. It's a simplified version of
-a system we run in production, where it powers company recommendations and lead generation.
+CPU-only multilingual recommendations with RabbitMQ, FastAPI and PostgreSQL/pgvector. Assessment **2026.11**, based on upstream commit `d9bed24` / tag `mle-v2026.11`. The original brief is preserved in [ASSESSMENT.md](ASSESSMENT.md).
 
-**Who it's for:** people early in their career, with 0 to 2 years of experience. Fresh graduates are welcome.
+The consumer handles malformed input, duplicate delivery and out-of-order updates. Message deduplication and company changes commit together before acknowledgement. Similarity search runs in Postgres; HTTP requests never load an embedding model.
 
-If you applied, thanks for your time. If you didn't, we hope this helps you learn something new, such as RabbitMQ or
-pgvector.
+## Run the complete pipeline
 
-Assessment version: **2026.11** (`mle-v2026.11`). What changed between versions is in [`CHANGELOG.md`](CHANGELOG.md).
-
-## The scenario
-
-When someone opens a company's page on the OneCredit portal, we want to show a **"Similar companies"** panel next to
-it. Someone looking at a coffee shop chain in Selangor should see other companies that do similar things.
-
-The registry team already publishes every company change to a RabbitMQ queue. Your job is to build the service that
-powers that panel from the feed.
-
-### What the user sees
-
-```
-┌──────────────────────────────────────────────────────────────────────────────┐
-│  OneCredit Portal                                         Search companies…  │
-├──────────────────────────────────────────────────────────────────────────────┤
-│                                                                              │
-│  Sinar Teguh Bakery Sdn. Bhd.                                   SYN-001550   │
-│  Food & Beverage · Selangor                                                  │
-│  Operating cafes and coffee shops in the Klang Valley                        │
-│                                                                              │
-│  Similar companies                                                           │
-│  ┌────────────────────────────────────┐  ┌────────────────────────────────┐  │
-│  │ Seri Sejahtera Food Sdn. Bhd.      │  │ Everbright Pacific Food        │  │
-│  │ Food & Beverage · Johor            │  │ Sdn. Bhd.                      │  │
-│  │                                    │  │ Food & Beverage · Kuala Lumpur │  │
-│  └────────────────────────────────────┘  └────────────────────────────────┘  │
-│  ┌────────────────────────────────────┐  ┌────────────────────────────────┐  │
-│  │ Gemilang Delima Food Sdn. Bhd.     │  │ Pacific Everbright Logistik    │  │
-│  │ Food & Beverage · Johor            │  │ PLT                            │  │
-│  │                                    │  │ Logistics · Kuala Lumpur       │  │
-│  └────────────────────────────────────┘  └────────────────────────────────┘  │
-│                                                                              │
-└──────────────────────────────────────────────────────────────────────────────┘
-```
-
-Clicking a card opens that company's page, with its own "Similar companies" panel.
-
-### How it works for the user
-
-```mermaid
-sequenceDiagram
-    actor User as Portal user
-    participant Portal as OneCredit portal
-    participant Service as Your service
-    participant DB as Postgres + pgvector
-    User->>Portal: Opens the page for SYN-001550
-    Portal->>Service: Similar companies for SYN-001550
-    Service->>DB: Nearest neighbours of SYN-001550
-    DB-->>Service: Closest companies
-    Service-->>Portal: Similar companies, most similar first
-    Portal-->>User: Page with the "Similar companies" panel
-    User->>Portal: Clicks Seri Sejahtera Food Sdn. Bhd.
-    Portal->>Service: Similar companies for SYN-000539
-```
-
-### How the data gets there
-
-```mermaid
-flowchart LR
-    P[Registry feed<br/>producer] -->|company-events| Q[(RabbitMQ)]
-    Q --> C[Your consumer]
-    C -->|embed descriptions| E[Embedding model]
-    C --> D[(Postgres + pgvector<br/>similarity search)]
-    A[Your service] --> D
-    W[OneCredit portal] --> A
-```
-
-### Notes from the registry team
-
-> The feed merges a few upstream sources and we don't validate what they send. Delivery is at-least-once, and every
-> message has an AMQP `message_id`. Each event carries the time the change happened at the source in `updatedAt`. We own
-> the `company-events` queue and declare it as durable with no extra arguments. We can't change the format before your
-> launch, so please work with what's there.
-
-### What the portal needs
-
-- Recommendations that reflect the latest information we've received about each company.
-- No lost companies. If a company is in the feed, users expect to see it on the portal and in other companies'
-  recommendations.
-- Fast enough to render while the company page loads.
-
-## The task
-
-1. Build a **consumer** that reads the `company-events` queue and stores each company in Postgres, with an embedding
-   of its business description in pgvector.
-2. Build the **service** the portal calls: given a company, return its most similar companies, with what the portal
-   needs to draw each card in the mock above. Run the similarity search in Postgres with pgvector. Matching companies
-   on their nature of business is enough for a first version.
-3. Write a short `DESIGN.md` covering the decisions you made, the assumptions you made where the scenario was unclear,
-   what you would change to handle 10x the volume, and what's left.
-4. Optional, up to one hour of your six: go deeper in one area you're strong in. For example: how good the
-   recommendations are, latency at a realistic scale, how you'd monitor this in production, or a design for explaining
-   a recommendation with an LLM (a design only; no paid APIs). Write it up in `DESIGN.md`.
-
-The rest is your call: the schema, the embedding model, your tests and tooling, and the API, including what the portal
-gets back when something goes wrong. Tell us in your own README how to start your consumer and service, and we'll
-follow it.
-
-Where the scenario leaves something open, make a reasonable call and write it down. There isn't one right answer.
-
-## Embeddings
-
-Use an open-source embedding model that runs on a laptop CPU. Don't call a paid API. Some options:
-
-- `BAAI/bge-small-en-v1.5`, a small CPU model (384 dimensions), through
-  [fastembed](https://qdrant.github.io/fastembed/) or sentence-transformers. The panel in the mock above comes from it.
-- A placeholder while you build, such as a hashed bag-of-words vector, as long as you say so in `DESIGN.md`.
-
-## Getting started
-
-You need Docker, [uv](https://docs.astral.sh/uv/) (it installs Python 3.14 for you) and
-[just](https://github.com/casey/just). Setup takes about 5 minutes and doesn't count towards your time.
+No paid API key, Hugging Face token, GPU or cloud account is required. Data comes from the unchanged official feed. The default model is **Microsoft Harrier OSS v1 0.6B**, pinned, MIT licensed, CPU-only, with its full 1,024-dimensional vectors. It was the highest mean-task score among open-weight sub-1B entries in the retrieved MTEB Multilingual v2 snapshot; see [selection evidence](evaluation/results/leaderboard-selection.json). This is a scoped leaderboard claim, not a claim that it is the largest overall winner.
 
 ```bash
-just setup      # install the producer's dependencies
-just up         # start Postgres (with pgvector) and RabbitMQ
-just publish    # publish the registry feed to the queue
-just down       # stop everything and delete the data
+uv sync --locked
+docker compose up -d --wait
+uv run python -m scripts.pipeline
 ```
 
-Postgres is at `postgresql://postgres:postgres@localhost:5432/companies`, and the RabbitMQ management UI is at
-http://localhost:15672 (user `guest`, password `guest`). If those ports are taken on your machine, export
-`POSTGRES_PORT`, `RABBITMQ_PORT` or `RABBITMQ_UI_PORT` in your shell before `just up`; `just publish` uses the same
-`RABBITMQ_PORT`.
+Or run `just pipeline`. This starts the actual consumer, publishes the official feed, drains and audits it, builds and validates HNSW, starts a temporary live API, benchmarks every searchable company at concurrency 1/8/32, evaluates recommendation quality and CPU/memory, then verifies a complete duplicate replay. It stops its worker/API processes and writes `evaluation/results/pipeline-latest/pipeline.json` plus raw metrics. It uses a new database schema and refuses a nonempty queue or another active consumer; it never truncates existing company data or purges messages.
 
-`just publish` sends the whole feed every time you run it. To start again from an empty queue and database, run
-`just down` and then `just up`.
+For a retained run, set `DATABASE_SCHEMA` to the schema printed in that report before starting the API. The pipeline leaves that schema available for inspection. Use the default `public` schema for the manual sequence below. `SEARCH_MODE=auto` uses only a model-specific HNSW index that passed verification, otherwise exact search. `SEARCH_MODE=exact` forces the reference path. HNSW optimizes limits up to four; larger limits use exact search.
 
-## What's already here
+Current measured pipeline and leaderboard-model results: [evaluation/SOTA_REPORT.md](evaluation/SOTA_REPORT.md). The earlier E5/BGE results are retained as baselines, not the current default.
 
+## Manual start from a clean checkout
+
+Requirements: Docker Engine/Compose, uv, and network access for the first model download. uv installs Python 3.14. `just` is optional.
+
+```bash
+uv sync --locked
+docker compose up -d --wait
+uv run python -m onecredit.cli init-db
+uv run python -m producer.publish
+uv run python -m onecredit.consumer --idle-seconds 5
+uv run python -m onecredit.cli audit
+uv run python -m scripts.index_benchmark
+uv run uvicorn onecredit.api:app --host 127.0.0.1 --port 8000
 ```
-.
-├── data/feed.jsonl        # the registry feed: 2,518 messages about 2,000 synthetic Malaysian companies, duplicates included
-├── producer/publish.py    # replays the feed onto the queue
-├── docker-compose.yml     # Postgres with pgvector, and RabbitMQ
-└── Justfile               # setup, up, publish, down
+
+In another terminal:
+
+```bash
+curl --fail --silent 'http://localhost:8000/companies/SYN-001550/similar?limit=4'
+curl --fail --silent 'http://localhost:8000/ready'
 ```
 
-Add whatever else you need (`uv add` for libraries).
+For a continuous worker, omit `--idle-seconds`. Ctrl-C closes its connection; unfinished messages remain eligible for redelivery. Idle exit is for a finite demo, not proof that upstream publishing is complete.
 
-## How to submit
+With `just`: `just setup`, `just up`, `just init-db`, `just publish`, `just drain`, `just audit`, `just serve`. `just demo` performs ingestion/audit, briefly starts an HTTP server on port 18080, prints recommendations and stops it.
 
-1. Click **Use this template** → **Create a new repository**, and make it **public**. Any name is fine.
-2. Build your solution in your copy, with `DESIGN.md` at the top level.
-3. When you're done, fill in the [submission form](https://docs.google.com/forms/d/e/1FAIpQLSdjCsXP5jFrKrIi4krLVS8Sq0rhM4mLlhycpsAo34sSj4h3FA/viewform) with a link to your repo and your résumé.
+**Reset is destructive:** `docker compose down -v` removes local assessment data. Then repeat setup. The provided Compose file has no named durable volumes and is not a production persistence configuration.
 
-If the setup itself is broken (Docker, the services or the data won't start), open a
-[Setup problem](https://github.com/OneCreditMY/mle-take-home/issues/new?template=setup-problem.yml) issue. Issues are public, so don't put your
-solution or personal details in one.
+## API
 
-## Time
+- `/health`: process liveness.
+- `/ready`: database/schema availability; database errors return 503.
+- `/companies/{reg}`: latest snapshot, including inactive/incomplete records and `recommendationEligible`.
+- `/companies/{reg}/similar?limit=4&method=dense`: ranked cards. Limit 1–20. Unknown/inactive source: 404; unavailable/incompatible embedding: 409; invalid parameters: 422; database errors: 503.
+- `/metrics`: bounded-label API request counters and duration histograms. Worker metrics are process-local; its structured logs are the operational output.
+- `/docs`: generated OpenAPI documentation.
 
-Plan for **4 to 6 hours**, within 7 days of creating your copy, and stop at 6 hours. If you run out of time,
-write down what you'd do next. A clear, honest "here's what's left" counts in your favour.
+The recommendation response contains `registrationNumber`, `method`, `scoreType`, `modelVersion` and `results`. Each result contains `registrationNumber`, `companyName`, nullable `industry`/`state`, and `score`. Cosine similarity is not a probability. Ties use registration number. Self, inactive/unnamed companies and incompatible vector spaces are excluded.
 
-## What we look at
+`method=hybrid` exposes experimental SQL lexical/vector Reciprocal Rank Fusion. Dense Harrier remains default because evaluation does not support lexical fusion as the general default.
 
-- Does it work, and does it keep working?
-- How you tested it.
-- How you reasoned about your choices and assumptions in `DESIGN.md`.
-- How readable your code is.
+## Configuration
 
-We don't expect a perfect or complete solution.
+See [.env.example](.env.example). Export variables explicitly; `.env` is not automatically loaded.
 
-## Using AI tools
+- `DATABASE_URL`, `RABBITMQ_URL`: override local connection defaults.
+- `POSTGRES_PORT`, `RABBITMQ_PORT`, `RABBITMQ_UI_PORT`: match the scaffold.
+- `EMBEDDING_MODEL`: `microsoft/harrier-oss-v1-0.6b` (default), `intfloat/multilingual-e5-small`, or `BAAI/bge-small-en-v1.5`.
+- `DATABASE_SCHEMA`: default `public`; the pipeline reports its isolated schema.
+- `SEARCH_MODE`: `auto` (verified index if available), `exact`, or `hnsw` (requires a verified index).
+- `MODEL_CACHE`: default `.models` (gitignored).
 
-Go ahead. Tell us in `DESIGN.md` which tools you used and for what. In the interview we'll ask you
-to walk us through your code, so make sure you understand everything you submit.
+Artifacts are revision-pinned in `onecredit/config.py`. Harrier uses PyTorch CPU, last-token pooling, the publisher's symmetric STS instruction and untruncated 1,024-d vectors. Business input is limited to 512 model tokens while full source text remains stored. E5/BGE use ONNX Runtime CPU as comparison baselines. Harrier's weight download is approximately 1.2 GB and its measured CPU process peak was about 3.8 GiB RAM on Linux, excluding infrastructure. Budget 6–8 GB free RAM for the full stack and several GB of free disk. Linux dependencies explicitly select CPU PyTorch wheels. No remote model code is executed. After populating the cache, use `HF_HUB_OFFLINE=1` for offline runs.
 
-## After you submit
+To change models, **stop API and worker**, set the new model, run `init-db` to upgrade the old 384-d column without dropping data, run `uv run python -m onecredit.cli reembed`, validate the new model's index, then restart both with that setting. Do not serve during migration: filtering prevents mixed spaces but not incomplete coverage. Replaying processed messages does not re-embed them.
 
-- We review your work as soon as we can.
-- If we move forward, the next interview is a walkthrough of your code with us.
-- Either way, you'll get written feedback by email.
-- Your repo stays yours. Keep it public as a portfolio piece if you like.
+## Tests
 
-## About the data
+```bash
+uv run ruff check onecredit tests evaluation scripts
+uv run ruff format --check onecredit tests evaluation scripts
+uv run pytest -q
 
-Everything in this repo is synthetic. We generated it for this assessment.
+# Explicit opt-in: disposable database, never production.
+TEST_DATABASE_URL=postgresql://postgres:postgres@localhost:5432/companies \
+TEST_RABBITMQ_URL=amqp://guest:guest@localhost:5672/ \
+uv run pytest -q
+```
 
-- The companies, names, registration numbers, descriptions and events are made up. Any resemblance to a real company
-  or person is a coincidence.
-- No OneCredit customer data, credit data or production data is in this repo, and none was used to create it.
-- Registration numbers use a made-up `SYN-` format, so they can't be mistaken for real Companies Commission of
-  Malaysia (SSM) numbers.
-- Your copy is public, so keep secrets, credentials and personal data out of it.
+Integration tests create/remove unique schemas. The broker test owns a separate durable queue and never purges `company-events`. Missing service URLs cause explicit skips. CI supplies both URLs and uses the provided Compose versions. Tests cover shuffled full-feed replay, concurrency, tombstones, rollback, acknowledgement failure, retries/cancellation, model isolation, poison input and API contracts. Deterministic test vectors are not used to make quality claims.
+
+## Evaluation and audit
+
+```bash
+uv run python -m onecredit.cli inspect-feed
+uv run python -m onecredit.cli audit
+uv run python -m evaluation.run --output evaluation/results/harrier-evaluation.json
+EMBEDDING_MODEL=intfloat/multilingual-e5-small \
+uv run python -m evaluation.run --output evaluation/results/e5-small.json
+EMBEDDING_MODEL=BAAI/bge-small-en-v1.5 \
+uv run python -m evaluation.run --output evaluation/results/bge-small.json
+uv run python -m scripts.benchmark
+uv run python -m scripts.model_benchmark --output evaluation/results/harrier-performance.json
+```
+
+Evaluation uses a temporary SQL table; it never changes company embeddings. Its 24 descriptions come from the official feed: 12 bilingual activity families, six development and six held-out query families. Query-description copies are excluded; cross-language queries restrict candidates to the other language. Labels are provisional and require independent bilingual review. This is a small diagnostic, not full-feed quality or a validated human gold standard.
+
+See [evaluation/SOTA_REPORT.md](evaluation/SOTA_REPORT.md) for current results, [evaluation/REPORT.md](evaluation/REPORT.md) for historical baselines, [cases](evaluation/cases.json), and [raw results](evaluation/results). The full pipeline and all 52 tests passed on the unchanged native PostgreSQL 16/pgvector and RabbitMQ Compose stack in [GitHub Actions](https://github.com/longhornyash/onecredit-company-recommendations/actions/runs/44676008272). Native measurements: 5,913 successful HTTP requests, p95 19.01 ms at concurrency eight, and 100% top-four ANN/exact agreement across all 1,971 searchable companies. Earlier PostgreSQL/WASM results remain separately labeled.
+
+The strict clean-feed audit expects **2,022** company records, **2,014** active and **1,971** searchable under the documented input policy. All **2,450** unique bodies must be accounted for, including rejected input; latest versions must match exactly.
+
+`uv run python -m onecredit.cli ingest-file` is an explicit recovery utility with the same transaction logic and publisher-compatible hashes. Normal ingestion is through RabbitMQ. File ingestion is not evidence of broker transport testing.
+
+## Submission
+
+Read [DESIGN.md](DESIGN.md) for assumptions, research, measured tradeoffs, 10× scaling, limits. The [public repository](https://github.com/longhornyash/onecredit-company-recommendations) was created from the official template. [Correctness CI](https://github.com/longhornyash/onecredit-company-recommendations/actions/runs/44676002430) and the [full native pipeline](https://github.com/longhornyash/onecredit-company-recommendations/actions/runs/44676008272) passed. Submit the repository URL and your résumé using the form in ASSESSMENT.md. No résumé or application has been submitted.

@@ -1,0 +1,15 @@
+{
+  "model": "microsoft/harrier-oss-v1-0.6b@f9b9dc8d367d443f2479d27aa5d8d2850c0774ee:nfkc-whitespace-v1:sts-last-token-cpu-f32-512-v1",
+  "dimensions": 1024,
+  "ef_search": 200,
+  "candidate_pool": 64,
+  "state": "passed",
+  "build_seconds": 0.669480541953817,
+  "queries": 1971,
+  "tie_aware_top4_valid_fraction": 1.0,
+  "strict_id_recall_at_4": 1.0,
+  "queries_outside_exact_distance_cutoff": [],
+  "index_scan_verified": true,
+  "total_seconds": 26.48245308396872,
+  "limitations": "Distance-cutoff agreement on this snapshot, not a guarantee for future updates. Exact ID recall penalizes equally good tied neighbours."
+}

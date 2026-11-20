@@ -1,0 +1,30 @@
+name: correctness
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      TEST_DATABASE_URL: postgresql://postgres:postgres@localhost:5432/companies
+      TEST_RABBITMQ_URL: amqp://guest:guest@localhost:5672/
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          enable-cache: true
+      - run: uv sync --locked
+      - run: uv run ruff check onecredit tests evaluation scripts
+      - run: uv run ruff format --check onecredit tests evaluation scripts
+      - run: docker compose up -d --wait
+      - run: uv run pytest -q --junitxml=test-results.xml
+      - if: always()
+        run: docker compose logs --no-color
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results
+          path: test-results.xml
+      - if: always()
+        run: docker compose down -v

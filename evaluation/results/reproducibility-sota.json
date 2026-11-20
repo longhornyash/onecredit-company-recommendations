@@ -1,0 +1,13 @@
+{
+  "fresh_archive_extraction": true,
+  "fresh_uv_sync_locked": true,
+  "tests": 52,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "ruff_check_passed": true,
+  "format_check_passed": true,
+  "database": "PostgreSQL 18.7 / PGlite",
+  "broker": "RabbitMQ 3.13.7",
+  "native_postgres16_verified": false
+}

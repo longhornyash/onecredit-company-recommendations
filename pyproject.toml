@@ -5,7 +5,49 @@ description = "Turn a company event feed into a similar-companies service with R
 requires-python = ">=3.14,<3.15"
 dependencies = [
   "aio-pika",
+  "fastapi>=0.115",
+  "fastembed>=0.7",
+  "huggingface-hub>=0.35",
+  "numpy>=2.3",
+  "pgvector>=0.3",
+  "prometheus-client>=0.21",
+  "psycopg[binary,pool]>=3.2",
+  "torch>=2.8",
+  "transformers>=4.57",
+  "uvicorn>=0.34",
 ]
 
 [tool.uv]
 package = false
+
+[tool.uv.sources]
+torch = [{ index = "pytorch-cpu", marker = "sys_platform == 'linux'" }]
+
+[[tool.uv.index]]
+name = "pytorch-cpu"
+url = "https://download.pytorch.org/whl/cpu"
+explicit = true
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"
+testpaths = ["tests"]
+markers = [
+    "integration: requires a disposable real Postgres database",
+    "rabbitmq: requires real RabbitMQ as well as Postgres",
+]
+
+[tool.ruff]
+line-length = 120
+target-version = "py314"
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F", "I"]
+
+[dependency-groups]
+dev = [
+    "httpx>=0.28.1",
+    "pytest>=9.2.0",
+    "pytest-asyncio>=1.5.0",
+    "ruff>=0.17.6",
+]
